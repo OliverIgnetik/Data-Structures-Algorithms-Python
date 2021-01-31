@@ -11,9 +11,9 @@ class Node:
         self.right = None
 
 
-tree = Node(10, "Hello")
-tree.left = Node(5, "Five")
-tree.right = Node(30, "Thirty")
+tree = Node("Hello", 10)
+tree.left = Node("Five", 5)
+tree.right = Node("Thirty", 30)
 
 
 def inorder(tree):
@@ -28,7 +28,7 @@ def sort_check(tree_vals):
 
 
 inorder(tree)
-sort_check(tree_vals)
+print('Validation BST : ', sort_check(tree_vals))
 
 
 # approach 2 tracking valid values for nodes

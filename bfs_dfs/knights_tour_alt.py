@@ -20,12 +20,12 @@ def legalCoord(x, bdSize):
         return False
 
 
-def KnightTour(visited, row, col, move, bdSize=8):
+def KnightTour(visited, row, col, move, bdSize):
     # print out visited array when you are done
     if (move == bdSize**2):
-        for i in range(8):
-            for j in range(8):
-                print(visited[i][j], end=" ")
+        for i in range(bdSize):
+            for j in range(bdSize):
+                print('{:<3d}'.format(visited[i][j]), end=" ")
             print('\n')
         return True
     else:
@@ -34,7 +34,7 @@ def KnightTour(visited, row, col, move, bdSize=8):
             new_row, new_col = newMove[0], newMove[1]
             move += 1
             visited[new_row][new_col] = move
-            if (KnightTour(visited, new_row, new_col, move)):
+            if (KnightTour(visited, new_row, new_col, move, bdsize)):
                 return True
             # backtrack
             move -= 1
@@ -43,20 +43,12 @@ def KnightTour(visited, row, col, move, bdSize=8):
     return False
 
 
-bdsize = 8
+bdsize = 5
 visited = [[0 for _ in range(bdsize)] for _ in range(bdsize)]
-
-# visited = [[0, 0, 0, 0, 0, 0, 0, 0],
-#            [0, 0, 0, 0, 0, 0, 0, 0],
-#            [0, 0, 0, 0, 0, 0, 0, 0],
-#            [0, 0, 0, 0, 0, 0, 0, 0],
-#            [0, 0, 0, 0, 0, 0, 0, 0],
-#            [0, 0, 0, 0, 0, 0, 0, 0],
-#            [0, 0, 0, 0, 0, 0, 0, 0],
-#            [0, 0, 0, 0, 0, 0, 0, 0]]
-
 
 # start position
 visited[0][0] = 1
 
+print('KNIGHTS TOUR')
+print('-'*60)
 KnightTour(visited, 0, 0, 1, bdsize)

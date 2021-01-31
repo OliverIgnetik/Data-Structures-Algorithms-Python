@@ -41,8 +41,10 @@ class Graph:
 
     def print_graph(self):
         for key in sorted(list(self.vertices.keys())):
-            print(key + str(self.vertices[key].neighbors) +
-                  "  " + str(self.vertices[key].distance))
+            print(
+                'Vertex : {:<3s} Neighbours : {:<25s} Level : {:<3s}'.format(key, str(self.vertices[key].neighbors), str(self.vertices[key].distance)))
+            # print(key + str(self.vertices[key].neighbors) +
+            #       "  " + str(self.vertices[key].distance))
 
     def bfs(self, vert):
         q = list()
@@ -85,7 +87,7 @@ class Graph:
                 print(node_u.name)
                 if node_u.name == target:
                     print(f'Path between {vert.name} and {node_u.name} exists')
-                    # return True
+                    return True
                 for v in node_u.neighbors:
                     node_v = self.vertices[v]
                     if node_v.color == 'black':
@@ -104,16 +106,20 @@ edges = ['AB', 'AE', 'BF', 'CG', 'DE', 'DH',
 for edge in edges:
     g.add_edge(edge[:1], edge[1:])
 
-print('BFS')
+print('BFS Traversal')
 print('-'*60)
 g.bfs(g.vertices['C'])
+print()
+
+print('GRAPH AFTER BFS')
+print('-'*60)
+g.print_graph()
+print()
 
 for vertex in g.vertices.values():
     vertex.color = 'black'
+
 # look for a path between C and E
-print('DFS')
+print('DFS Traversal up to target')
 print('-'*60)
 g.dfs(g.vertices['C'], 'E')
-print('GRAPH')
-print('-'*60)
-g.print_graph()

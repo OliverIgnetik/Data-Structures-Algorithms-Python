@@ -14,7 +14,6 @@ def bfs_paths(graph, start, goal):
     queue = [(start, [start])]
     while queue:
         (vertex, path) = queue.pop(0)
-        print(vertex)
         # Go through the neighbours you haven't visited
         for nv in graph[vertex] - set(path):
             if nv == goal:
@@ -49,7 +48,7 @@ print('BFS TRAVERSAL')
 print(bfs(graph, 'F'))
 
 print('BFS PATHS')
-print(list(bfs_paths(graph, 'F', 'A')))
+print(list(bfs_paths(graph, 'F', 'J')))
 
 print('SHORTEST PATH')
-print(shortest_path(graph, 'F', 'A'))
+print(shortest_path(graph, 'F', 'J'))

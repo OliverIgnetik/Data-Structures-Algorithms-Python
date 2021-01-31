@@ -32,7 +32,8 @@ def buildGraph(wordFile):
                     g.addEdge(word1, word2)
     return g
 
-    # build my graph
+
+# build my graph
 print('-'*50)
 print('buckets of words')
 print('-'*50)
