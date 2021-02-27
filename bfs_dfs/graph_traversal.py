@@ -69,7 +69,7 @@ class Graph:
                         # this line is used in conjuction with the node_u.color == 'black'
                         # use case : non-uniformily weighted graph
                         if node_v.distance > node_u.distance + 1:
-                            node_v.distance = node_u.distance + 1
+                            node_v.distance += 1
 
     def dfs(self, vert, target):
         s = list()

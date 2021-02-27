@@ -19,13 +19,13 @@ class BinarySearchTree:
             if new_node.val < temp.val:
                 if temp.left == None:
                     temp.left = new_node
-                    break
+                    return
                 else:
                     temp = temp.left
             elif new_node.val > temp.val:
                 if temp.right == None:
                     temp.right = new_node
-                    break
+                    return
                 else:
                     temp = temp.right
 

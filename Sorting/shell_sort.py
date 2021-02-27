@@ -10,11 +10,8 @@ def shell_sort(arr):
 
 
 def gap_insertion_sort(arr, start, gap):
-    #     print(f'arr: {arr}')
-    #     print(f'start: {start}')
-    #     print(f'gap: {gap}')
+
     for i in range(start+gap, len(arr), gap):
-        #         print(f'index : {i}, value : {arr[i]}')
         currentvalue = arr[i]
         position = i
         # Using the Gap
