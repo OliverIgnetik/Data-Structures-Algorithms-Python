@@ -47,3 +47,5 @@ for vertex in g:
     print(vertex)
     print(vertex.getConnections())
     print('\n')
+
+print(g.dfs('pope', 'hope'))

@@ -33,3 +33,28 @@ class Graph:
 
     def __iter__(self):
         return iter(self.vertList.values())
+
+    def dfs(self, vert_id, target_id):
+        s = list()
+        # take a set of words not chars
+        visited = set(vert_id.split(' '))
+        print(vert_id)
+        for n in self.vertList[vert_id].connectedTo.keys():
+            s.append(n.id)
+
+        while len(s) > 0:
+            u = s.pop()
+            node_u = self.vertList[u]
+            # if we haven't visited it
+            if node_u.id not in visited:
+                visited.add(node_u.id)
+                print(node_u.id)
+                if node_u.id == target_id:
+                    print(f'Path between {vert_id} and {node_u.id} exists')
+                    return True
+                for n in node_u.connectedTo.keys():
+                    node_v = self.vertList[n.id]
+                    if node_v.id not in visited:
+                        s.append(node_v.id)
+
+        return False
