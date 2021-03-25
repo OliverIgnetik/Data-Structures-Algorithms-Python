@@ -16,3 +16,4 @@ def reverse_alt(word):
 
 
 print(reverse_alt('hello there'))
+print(reverse('hello there'))

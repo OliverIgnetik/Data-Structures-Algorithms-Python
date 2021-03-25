@@ -1,32 +1,32 @@
-# def rec_coin(target, coins):
-#     '''
-#     INPUT: Target change amount and list of coin values
-#     OUTPUT: Minimum coins needed to make change
+def rec_coin(target, coins):
+    '''
+    INPUT: Target change amount and list of coin values
+    OUTPUT: Minimum coins needed to make change
 
-#     Note, this solution is not optimized.
-#     '''
+    Note, this solution is not optimized.
+    '''
 
-#     # Default to target value
-#     min_coins = target
+    # Default to target value
+    min_coins = target
 
-#     # Check to see if we have a single coin match (BASE CASE)
-#     if target in coins:
-#         return 1
+    # Check to see if we have a single coin match (BASE CASE)
+    if target in coins:
+        return 1
 
-#     else:
+    else:
 
-#         # for every coin value that is <= than target
-#         for i in [c for c in coins if c <= target]:
+        # for every coin value that is <= than target
+        for i in [c for c in coins if c <= target]:
 
-#             # Recursive Call (add a count coin and subtract from the target)
-#             num_coins = 1 + rec_coin(target-i, coins)
+            # Recursive Call (add a count coin and subtract from the target)
+            num_coins = 1 + rec_coin(target-i, coins)
 
-#             # Reset Minimum if we have a new minimum
-#             if num_coins < min_coins:
+            # Reset Minimum if we have a new minimum
+            if num_coins < min_coins:
 
-#                 min_coins = num_coins
+                min_coins = num_coins
 
-#     return min_coins
+    return min_coins
 
 
 def rec_coin_dynam(target, coins, known_results):
@@ -46,7 +46,7 @@ def rec_coin_dynam(target, coins, known_results):
         known_results[target] = 1
         return 1
 
-    # Return a known result if it happens to be greater than 1
+    # Return a known result if it happens to be greater than 0
     elif known_results[target] > 0:
         return known_results[target]
 
@@ -66,12 +66,29 @@ def rec_coin_dynam(target, coins, known_results):
 
     return min_coins
 
-# print(rec_coin(63, [1, 5, 10, 25]))
+
+def bottom_up_solution(n, coins):
+
+    arr = [0] + [n]*(n)
+
+    for i in range(1, len(arr)):
+        min_coins = n
+        for coin in [c for c in coins if c <= i]:
+            min_coins = min(arr[i-coin] + 1, min_coins)
+
+        arr[i] = min_coins
+
+    return arr[n]
+
+
+print(bottom_up_solution(6, [1, 2, 5]))
+
+# print(rec_coin(63, [1, 2, 5, 10, 20]))
 
 
 # dynamic solution
-target = 74
-coins = [1, 5, 10, 25]
+target = 23
+coins = [1, 2, 5, 10, 20]
 known_results = [0]*(target+1)
 
 print(rec_coin_dynam(target, coins, known_results))

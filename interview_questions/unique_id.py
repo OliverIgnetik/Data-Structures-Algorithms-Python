@@ -3,7 +3,7 @@ def solution(id_list):
     # Initiate unique Id
     unique_id = 0
 
-    # XOR forr every id in id list
+    # XOR for every id in id list
     for i in id_list:
 
         # XOR operation

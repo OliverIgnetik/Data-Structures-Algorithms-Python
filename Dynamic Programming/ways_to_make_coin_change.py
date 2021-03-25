@@ -1,4 +1,4 @@
-# number of ways to make up target value
+# total number of ways to make up target value
 
 def solution(n, coins):
 
@@ -15,4 +15,4 @@ def solution(n, coins):
         return arr[n]
 
 
-print(solution(10, [1, 2, 5]))
+print(solution(6, [1, 2, 5]))

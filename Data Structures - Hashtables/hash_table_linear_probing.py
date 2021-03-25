@@ -9,26 +9,20 @@ class HashTable(object):
 
     def put(self, key, data):
         # Note, we'll only use integer keys for ease of use with the Hash Function
-
         # Get the hash value
         hashvalue = self.hashfunction(key, len(self.slots))
-
-        # If Slot is Empty
+        # If slot is Empty
         if self.slots[hashvalue] == None:
             self.slots[hashvalue] = key
             self.data[hashvalue] = data
-
         else:
-
             # If key already exists, replace old value
             if self.slots[hashvalue] == key:
                 self.data[hashvalue] = data
-
             # Otherwise, find the next available slot
             else:
                 initial_slot = hashvalue
                 nextslot = self.rehash(hashvalue, len(self.slots))
-
                 # Get to the next slot - linear probing
                 # stop when the next slot has no key or the next slot is equal to the current key
                 while self.slots[nextslot] != None and self.slots[nextslot] != key:
@@ -36,13 +30,10 @@ class HashTable(object):
                     if nextslot == initial_slot:
                         raise KeyError(
                             'Hashtable is full, linear probing revealed no empty slots')
-                        return
-
                 # Set new key, if NONE
                 if self.slots[nextslot] == None:
                     self.slots[nextslot] = key
                     self.data[nextslot] = data
-
                 # Otherwise replace old value
                 else:
                     self.data[nextslot] = data
