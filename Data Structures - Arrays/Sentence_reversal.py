@@ -23,6 +23,8 @@ from nose.tools import assert_equal
 ################################# Solution ##############################
 
 
+# very pythonic solutions
+
 def rev_word1(s):
     return " ".join(reversed(s.split()))
 
@@ -32,6 +34,8 @@ def rev_word1(s):
 def rev_word2(s):
     return " ".join(s.split()[::-1])
 
+
+# fully worked solution
 
 def splitter(s):
     """

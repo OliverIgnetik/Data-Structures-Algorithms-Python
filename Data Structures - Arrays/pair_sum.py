@@ -5,7 +5,7 @@ def pair_sum(arr, k):
 
     # edge case check
     if len(arr) < 2:
-        return ValueError('There are no pairs in an array with length 1')
+        raise ValueError('There are no pairs in an array with length 1')
 
     # sets for tracking are great for changing quadratic
     # complexity to linear

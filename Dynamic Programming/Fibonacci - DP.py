@@ -14,6 +14,8 @@ print(fib.cache_info())
 
 
 # O(N) time complexity
+
+
 cache = {}
 
 
@@ -31,3 +33,20 @@ def fibo(n):
 x = fibo(8)
 print(cache)
 print(x)
+
+
+def fib_iter(n):
+
+    # Set starting point
+    a = 0
+    b = 1
+
+    # Follow algorithm
+    for i in range(n):
+
+        a, b = b, a + b
+
+    return a
+
+
+print(fib_iter(3))

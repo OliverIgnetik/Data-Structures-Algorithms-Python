@@ -35,8 +35,7 @@ class LinkedList():
         i = 0
         temp = self.head
         if index >= self.length:
-            self.append(data)
-            return
+            raise IndexError('Index out of range')
         if index == 0:
             self.prepend(data)
             return
@@ -44,7 +43,7 @@ class LinkedList():
             if i == index-1:
                 temp.next, new_node.next = new_node, temp.next
                 self.length += 1
-                break
+                return
             temp = temp.next
             i += 1
 
@@ -52,18 +51,33 @@ class LinkedList():
         temp = self.head
         i = 0
         if index >= self.length:
-            print("Entered wrong index")
+            raise IndexError('Index out of range')
 
+        # remove the head
         if index == 0:
-            self.head = self.head.next
-            self.length -= 1
-            return
+            if self.length == 1:
+                self.head = None
+                self.tail = head
+                self.length -= 1
+                return
+            else:
+                self.head = self.head.next
+                self.length -= 1
+                return
 
         while i < self.length:
-            if i == index-1:
+            # removing the tail
+            if i == index - 1 and index == self.length-1:
+                temp.next = None
+                self.tail = temp
+                self.length -= 1
+                return
+
+            # otherwise
+            elif i == index-1:
                 temp.next = temp.next.next
                 self.length -= 1
-                break
+                return
             i += 1
             temp = temp.next
 
@@ -77,13 +91,13 @@ class LinkedList():
 
     def reverse(self):
         prev = None
-        self.tail = self.head
-        while self.head != None:
-            temp = self.head
-            self.head = self.head.next
+        temp = self.head
+        while temp:
+            next_ = temp.next
             temp.next = prev
-            prev = temp
-        self.head = temp
+            prev, temp = temp, next_
+
+        self.head, self.tail = self.tail, self.head
 
 
 l = LinkedList()
@@ -92,7 +106,7 @@ l.append(5)
 l.append(6)
 l.prepend(1)
 l.insert(2, 99)
-l.insert(34, 23)
+l.insert(4, 23)
 l.remove(5)
 l.reverse()
 l.printl()

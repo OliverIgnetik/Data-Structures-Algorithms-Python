@@ -1,12 +1,12 @@
 def fib(num):
     a = 0
     b = 1
-    sum = 0
+    sum_ = 0
     for i in range(0, num):
-        sum = a+b
+        sum_ = a+b
         a = b
-        b = sum
-    return sum
+        b = sum_
+    return sum_
 
 # time complexity - O(2^N)
 

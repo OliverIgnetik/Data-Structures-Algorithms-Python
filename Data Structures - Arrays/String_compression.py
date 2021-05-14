@@ -61,9 +61,8 @@ class TestCompress(object):
         print('ALL TEST CASES PASSED')
 
 
-# Run Tests
-t = TestCompress()
-t.test(compress)
-
-
 print(compress('AAAAABBBBCCCCD'))
+
+# Run Tests
+# t = TestCompress()
+# t.test(compress)

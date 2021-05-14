@@ -1,8 +1,10 @@
 from functools import lru_cache
+import time
 
 
 def add80(n):
-    print('Long time')
+    time.sleep(1)
+    print('loading...')
     return n+80
 
 
@@ -18,7 +20,8 @@ def memoizedadd80(n):
     if n in cache:
         return cache[n]
     else:
-        print('Long time')
+        time.sleep(1)
+        print('loading...')
         cache[n] = n+80
         return cache[n]
 
@@ -26,8 +29,10 @@ def memoizedadd80(n):
 print(memoizedadd80(6))
 print(memoizedadd80(6))
 
-# Memoization 2
 
+# Memoization 2
+# Use of higher order function and lexical closure
+# the returned function remembers the state of the enclosing function
 
 def memoizedadd80():
     cache = {}
@@ -36,8 +41,9 @@ def memoizedadd80():
         if n in cache:
             return cache[n]
         else:
-            print('Long time')
-            cache[n] = n+80
+            time.sleep(1)
+            print('loading...')
+            cache[n] = n + 80
             return cache[n]
     return memoized
 
@@ -49,7 +55,7 @@ print(memo(7))
 
 # https://docs.python.org/3.3/library/functools.html --> Doc for lru_cache
 
-
+# Memoization 3 LRU cache
 @lru_cache(maxsize=1000)
 def memoized2add80(n):
     return n + 80
