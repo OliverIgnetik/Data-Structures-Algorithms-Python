@@ -43,8 +43,6 @@ class Graph:
         for key in sorted(list(self.vertices.keys())):
             print(
                 'Vertex : {:<3s} Neighbours : {:<25s} Level : {:<3s}'.format(key, str(self.vertices[key].neighbors), str(self.vertices[key].distance)))
-            # print(key + str(self.vertices[key].neighbors) +
-            #       "  " + str(self.vertices[key].distance))
 
     def bfs(self, vert):
         q = list()
@@ -69,7 +67,7 @@ class Graph:
                         # this line is used in conjuction with the node_u.color == 'black'
                         # use case : non-uniformily weighted graph
                         if node_v.distance > node_u.distance + 1:
-                            node_v.distance += 1
+                            node_v.distance = node_u.distance + 1
 
     def dfs(self, vert, target):
         s = list()
@@ -118,6 +116,7 @@ print()
 
 for vertex in g.vertices.values():
     vertex.color = 'black'
+    vertex.distance = 9999
 
 # look for a path between C and E
 print('DFS Traversal up to target')

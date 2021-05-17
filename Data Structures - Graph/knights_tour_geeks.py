@@ -36,7 +36,7 @@ def solveKT(n):
     '''
 
     # Initialization of Board matrix
-    board = [[-1 for i in range(n)]for i in range(n)]
+    board = [[-1 for i in range(n)] for i in range(n)]
 
     # move_x and move_y define next move of Knight.
     # move_x is for next value of x coordinate

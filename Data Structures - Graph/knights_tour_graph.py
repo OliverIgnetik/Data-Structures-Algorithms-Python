@@ -1,4 +1,4 @@
-# https: // bradfieldcs.com/algos/graphs/knights-tour/
+# https://bradfieldcs.com/algos/graphs/knights-tour/
 
 class Vertex:
     def __init__(self, key):
@@ -139,7 +139,7 @@ dimensions = 5
 ktGraph = knightGraph(dimensions)
 
 limit = dimensions**2
-start_point = ktGraph.vertList[0]
+start_point = ktGraph.vertList[4]
 path = []
 depth = 1
 
