@@ -192,7 +192,7 @@ class BinarySearchTree:
             else:
                 currentNode.parent.rightChild = None
         elif currentNode.hasBothChildren():  # interior
-            # find the succesor
+            # find the successor
             # the successor is the next largest value in the subtree
             succ = currentNode.findSuccessor()
             # splice out successor
@@ -232,19 +232,27 @@ class BinarySearchTree:
                                                 currentNode.rightChild.rightChild)
 
 
+# string for visual algo
+# 45, 20, 15, 8, 6, 7, 3, 11, 75, 100, 51, 48, 66, 87, 72, 98, 24, 31, 19
 mytree = BinarySearchTree()
-mytree[5] = "red"
-mytree[15] = "blue"
-mytree[3] = "yellow"
-mytree[1] = "pink"
-mytree[4] = "orange"
-mytree[10] = "grey"
-mytree[20] = "black"
-mytree[8] = "green"
-mytree[11] = "light blue"
-mytree[22] = "dark green"
-mytree[18] = "purple"
-del mytree[15]
+mytree[45] = "r1"
+mytree[20] = "b1"
+mytree[15] = "y1"
+mytree[8] = "p1"
+mytree[6] = "o1"
+mytree[7] = "g1"
+mytree[3] = "b2"
+mytree[11] = "g1"
+mytree[75] = "l1"
+mytree[100] = "d1"
+mytree[51] = "p2"
+mytree[48] = "o2"
+mytree[66] = "p3"
+mytree[87] = "g2"
+mytree[72] = "y2"
+mytree[98] = "b3"
+
+del mytree[75]
 
 for key, payload in mytree.root:
     print(f'key : {key} payload : {payload}')

@@ -1,4 +1,5 @@
 import collections
+from level_order_traverse import levelOrderPrint
 
 
 class Node:
@@ -6,27 +7,6 @@ class Node:
         self.left = None
         self.right = None
         self.val = val
-
-
-def levelOrderPrint(tree):
-    if not tree:
-        return
-    nodes = collections.deque([tree])
-    currentCount, nextCount = 1, 0
-    while len(nodes) != 0:
-        currentNode = nodes.popleft()
-        currentCount -= 1
-        print(currentNode.val)
-        if currentNode.left:
-            nodes.append(currentNode.left)
-            nextCount += 1
-        if currentNode.right:
-            nodes.append(currentNode.right)
-            nextCount += 1
-        if currentCount == 0:
-            # finished printing current level
-            print('\n')
-            currentCount, nextCount = nextCount, currentCount
 
 
 def trimBST(tree, minVal, maxVal):
@@ -54,5 +34,5 @@ root.left.right = Node(7)
 root.right = Node(30)
 root.right.right = Node(35)
 root.right.left = Node(28)
-trimmedBST = trimBST(root, 2, 20)
+trimmedBST = trimBST(root, 2, 30)
 levelOrderPrint(trimmedBST)

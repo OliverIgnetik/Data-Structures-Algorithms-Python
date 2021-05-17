@@ -24,10 +24,9 @@ class BinHeap:
     def percDown(self, i):
 
         while (i * 2) <= self.currentSize:
-            # where is the minChild
+            # Which child is the minimum?
             mc = self.minChild(i)
             if self.heapList[i] > self.heapList[mc]:
-
                 tmp = self.heapList[i]
                 self.heapList[i] = self.heapList[mc]
                 self.heapList[mc] = tmp
@@ -61,13 +60,9 @@ class BinHeap:
             i = i - 1
 
 
-""" MINHEAP
-       1
-    3     4
-  10  8  7  12 
-"""
-bh = BinHeap()
+# MINHEAP
 # bh.buildHeap([1, 3, 4, 10, 8, 7, 12])
+bh = BinHeap()
 bh.insert(10)
 bh.insert(4)
 bh.insert(3)

@@ -84,4 +84,4 @@ root.right = Node(8, "e")
 root.right.left = Node(6, "f")
 root.right.right = Node(7, "g")
 
-print(verify(root))  # prints False, since 15 is to the left of 10
+print(verify(root))  # prints False
