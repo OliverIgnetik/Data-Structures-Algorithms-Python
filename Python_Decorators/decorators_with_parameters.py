@@ -23,7 +23,7 @@ def my_fun(*args):
 
 # another way of using dacorators
 decorator_func(12, 15)(my_fun)('Geeks', 'for', 'Geeks')
-
+print('-'*60)
 # Python code to illustrate
 # Decorators with parameters in Python (Multi-level Decorators)
 
