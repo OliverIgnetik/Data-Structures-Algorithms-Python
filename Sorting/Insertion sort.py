@@ -35,5 +35,5 @@ def insertion_sort(arr):
 
 
 arr = [6, 5, 3, 1, 8, 7, 2, 4]
-# print(insertion_sort(arr))
-print(insertionsort(arr))
+print(insertion_sort(arr))
+# print(insertionsort(arr))

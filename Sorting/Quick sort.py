@@ -1,32 +1,29 @@
 # SOLUTION 1
-# def quicksort(array, left, right):
-#     if left < right:
-#         pivot = right
-#         partitionindex = partition(array, pivot, left, right)
+def quicksort(array, left, right):
+    if left < right:
+        pivot = right
+        partitionindex = partition(array, pivot, left, right)
 
-#         quicksort(array, left, partitionindex - 1)
-#         quicksort(array, partitionindex + 1, right)
-#     return array
-
-
-# def partition(array, pivot, left, right):
-#     pivotvalue = array[pivot]
-#     partitionindex = left  # keeps track of the last swap
-
-#     for i in range(left, right):
-#         if array[i] < pivotvalue:
-#             swap(array, i, partitionindex)
-#             partitionindex += 1
-#     # final swap to complete partition
-#     swap(array, right, partitionindex)
-#     return partitionindex
+        quicksort(array, left, partitionindex - 1)
+        quicksort(array, partitionindex + 1, right)
+    return array
 
 
-# def swap(array, firstindex, secondindex):
-#     array[firstindex], array[secondindex] = array[secondindex], array[firstindex]
-##     temp = array[firstindex]
-##     array[firstindex] = array[secondindex]
-##     array[secondindex] = temp
+def partition(array, pivot, left, right):
+    pivotvalue = array[pivot]
+    partitionindex = left  # keeps track of the last swap
+
+    for i in range(left, right):
+        if array[i] < pivotvalue:
+            swap(array, i, partitionindex)
+            partitionindex += 1
+    # final swap to complete partition
+    swap(array, right, partitionindex)
+    return partitionindex
+
+
+def swap(array, firstindex, secondindex):
+    array[firstindex], array[secondindex] = array[secondindex], array[firstindex]
 
 
 # SOLUTION 2
@@ -83,7 +80,7 @@ def swap_alt(array, firstindex, secondindex):
 numbers = [8, 9, 4, 3, 5, 1]
 
 # Select first and last index as 2nd and 3rd parameters
-print(quick_sort_alt(numbers))
-# partition_test = [1, 3, 10, 8, 5, 4, 7, 6]
-# partition(partition_test, len(partition_test) - 1, 0, len(partition_test)-1)
-# print(quicksort(numbers, 0, len(numbers)-1))
+# print(quick_sort_alt(numbers))
+partition_test = [1, 3, 10, 8, 5, 4, 7, 6]
+partition(partition_test, len(partition_test) - 1, 0, len(partition_test)-1)
+print(quicksort(numbers, 0, len(numbers)-1))

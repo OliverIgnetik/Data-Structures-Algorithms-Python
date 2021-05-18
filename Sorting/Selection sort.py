@@ -6,7 +6,7 @@ def selectionsort(arr):
         for j in range(i+1, len(arr)):
             if arr[j] < min_value:
                 index = j
-                # min_value = arr[j]
+                min_value = arr[j]
         arr[i], arr[index] = arr[index], arr[i]
         i += 1
 

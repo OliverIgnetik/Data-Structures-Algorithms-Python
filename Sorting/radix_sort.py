@@ -5,6 +5,14 @@
 # A function to do counting sort of arr[] according to
 # the digit represented by exp.
 
+##################### COMPLEXITY ANALYSIS #######################################
+
+# Time complexity O(d(n + k))
+# Space complexity O(n + k)
+
+# where n is the number of keys and k is the
+
+
 def countingSort(arr, exp1):
 
     n = len(arr)
@@ -41,25 +49,25 @@ def countingSort(arr, exp1):
     for i in range(0, len(arr)):
         arr[i] = output[i]
 
-# Method to do Radix Sort
 
+# Method to do Radix Sort
 
 def radixSort(arr):
 
-    # Find the maximum number to know number of digits
+    # Find the maximum number in the array
     max1 = max(arr)
 
     # Do counting sort for every digit. Note that instead
-    # of passing digit number, exp is passed. exp is 10^i
+    # of passing the digit number, exp is passed. exp is 10^i
     # where i is current digit number
     exp = 1
-    while max1 / exp > 0:
+    while int(max1 / exp) > 0:
         countingSort(arr, exp)
         exp *= 10
 
 
 # Driver code
-arr = [170, 45, 75, 90, 802, 24, 2, 66]
+arr = [170, 45, 75, 9511, 9512, 24, 2, 66]
 
 # Function Call
 radixSort(arr)
