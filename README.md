@@ -20,3 +20,10 @@ This repository is language specific with algorithms and data structures impleme
 4. Traversals
    - BFS
    - DFS
+
+# Some helpful resources
+
+- [Programiz Data Structures and Algorithms](https://www.programiz.com/dsa)
+- [Algotree Website](https://algotree.org/)
+- [Runestone Tutorials](https://runestone.academy/runestone/books/published/pythonds/index.html)
+- [Visualalgo](https://visualgo.net/en)
