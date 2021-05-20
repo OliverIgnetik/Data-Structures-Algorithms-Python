@@ -1,5 +1,6 @@
 # Prim's Algorithm in Python
-
+# resources
+# https://www.youtube.com/watch?v=MaaSoZUEoos Joe James
 
 INF = 9999999
 # number of vertices in graph

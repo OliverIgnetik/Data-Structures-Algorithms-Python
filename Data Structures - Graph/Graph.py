@@ -1,6 +1,7 @@
 from Vertex import Vertex
 
 
+# Adjacency List implementation of an undirected graph
 class Graph:
     def __init__(self):
         self.vertList = {}

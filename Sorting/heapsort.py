@@ -6,28 +6,39 @@
 # COMPLEXITY ANALYSIS
 # O(NlogN) time complexity
 
+from heapq import heappush, heappop
+
+#################### PYTHON DOCS IMPLEMENTATION ##################################
+# https://docs.python.org/2/library/heapq.html#priority-queue-implementation-notes
+# this works more succintly because we make use of a minheap not a maxheap
+
+
+def heapsort_alt(iterable):
+    h = []
+    for value in iterable:
+        heappush(h, value)
+    return [heappop(h) for _ in range(len(h))]
+
+
+#################### MAXHEAP GEEKSFORGEEKS IMPLEMENTATION ##################################
 def heapify(arr, n, i):
     largest = i  # Initialize largest as root
-    l = 2 * i + 1	 # left = 2*i + 1
-    r = 2 * i + 2	 # right = 2*i + 2
+    l = 2 * i + 1
+    r = 2 * i + 2
 
-    # See if left child of root exists and is
-    # greater than root
+    # check if left child is greater
     if l < n and arr[largest] < arr[l]:
         largest = l
 
-    # See if right child of root exists and is
-    # greater than root
+    # check if right child is greater
     if r < n and arr[largest] < arr[r]:
         largest = r
 
     # Change root, if needed
     if largest != i:
-        arr[i], arr[largest] = arr[largest], arr[i]  # swap
+        arr[i], arr[largest] = arr[largest], arr[i]
         # Heapify the root.
         heapify(arr, n, largest)
-
-# The main function to sort an array of given size
 
 
 def heapSort(arr):
@@ -38,17 +49,18 @@ def heapSort(arr):
     for k in range(n//2 - 1, -1, -1):
         heapify(arr, n, k)
 
-    # Traverse the list in reverse. Heapify the remaining elements each time you place the maximum
+    # Heapify the remaining elements, each time you place the maximum
     # at the end of list
     for k in range(n-1, 0, -1):
         arr[k], arr[0] = arr[0], arr[k]  # swap
         heapify(arr, k, 0)
 
 
-# Driver code
+############################### TEST ####################################
 arr = [12, 11, 13, 5, 6, 7]
 heapSort(arr)
 n = len(arr)
 print("Sorted array is")
 print(arr)
-# This code is contributed by Mohit Kumra
+
+print(heapsort_alt(arr))

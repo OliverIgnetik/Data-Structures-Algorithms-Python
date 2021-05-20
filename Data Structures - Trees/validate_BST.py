@@ -32,13 +32,6 @@ print('Validation BST : ', sort_check(tree_vals))
 
 
 # approach 2 tracking valid values for nodes
-class Node:
-    def __init__(self, k, val):
-        self.key = k
-        self.value = val
-        self.left = None
-        self.right = None
-
 
 def tree_max(node):
     if not node:
@@ -66,6 +59,7 @@ def verify(node):
         return False
 
 
+####################################### TEST #################################
 root = Node(5, "a")
 root.left = Node(2, "b")
 root.left.left = Node(1, "c")
