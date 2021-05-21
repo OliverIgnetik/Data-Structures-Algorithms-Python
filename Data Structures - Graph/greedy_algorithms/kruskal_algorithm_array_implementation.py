@@ -3,10 +3,14 @@
 # Tree (MST) is a subset of the edges in the graph which connects all the
 # vertices together (without creating cycles) while minimizing the total edge cost
 
+# TIME COMPLEXITY
+# T = O(ElogV)
+
 # RESOURCES
 # https://www.youtube.com/watch?v=JZBQLXgSGfs William Fiset Kruskal's algorithm
 # https://www.youtube.com/watch?v=0jNmHPfA_yE Union find operation
 # https://www.youtube.com/watch?v=qOv8K-AJ7o0&t=35s Back To Back SWE Kruskal's algorithm
+# https://www.hackerearth.com/practice/algorithms/graphs/minimum-spanning-tree/tutorial/ hackerearth MST
 
 ############ IMPLEMENTATION ############
 
