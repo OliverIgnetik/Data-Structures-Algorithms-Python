@@ -6,18 +6,24 @@
 # https://www.youtube.com/watch?v=U9Raj6rAqqs&list=PLj8W7XIvO93oxLOZTi8JFghuRcKieIZU-&index=3 Joe James
 
 
-# Dijkstra's Algorithm in Python
+################################ Dijkstra's Algorithm in Python ################################
 
-# OVERVIEW
-# It is a greedy algorithm because it selects the locally optimum solution
+################################ OVERVIEW ################################
+# It is a greedy algorithm because it selects the locally optimum solution.
+# Dijkstra's algorithm finds the shortest path in a connected graph.
+# It does this by using a priority queue to help with choosing the local
+# optimum. The algorithm also keeps track of the visited vertices, and
+# the distance to each vertex. We can reconstruct the path to the target vertex
+# by keeping track of the vertex that was visited preceeding the current vertex.
 
-# ASSUMPTION
+################################ ASSUMPTION ################################
 # The main assumptions of Dijkstra's algorithm is that the graphs
-# have non-negative edge weights
+# have non-negative edge weights.
 
 # Use of min priority queue or min heap to find the next nearest vertex
 # Known as a greedy algorithm
-# Time complexity O(ElogV)
+################################# Time complexity ################################
+# T = O(ElogV)
 
 
 import sys
@@ -56,7 +62,7 @@ def to_be_visited():
 num_of_vertices = len(vertices[0])
 
 visited_and_distance = [[0, 0]]
-for i in range(num_of_vertices-1):
+for i in range(num_of_vertices - 1):
     visited_and_distance.append([0, sys.maxsize])
 
 for vertex in range(num_of_vertices):

@@ -2,56 +2,18 @@
 # https://www.youtube.com/watch?v=pSqmAO-m7Lk   WilliamFiset Dijkstra's algorithm
 # https://www.youtube.com/watch?v=jND_WJ8r7FE&list=PLDV1Zeh2NRsB6SWUrDFW2RmDotAfPbeHu&index=52&t=9s WilliamFiset Indexed Priority Queue
 import sys
-sys.path.append('../../Data Structures - Stacks and Queues')
+sys.path.append('..\\..\\Data Structures - Stacks and Queues')
 
 from queue import PriorityQueue
 from math import inf
 from typing import NamedTuple
 from indexed_priority_queue_pydict import minpq
+from directed_graph import AdjacencyListGraph
 
-
+################################ GRAPH DATA STRUCTURE ################################
 # g a weighted graph that is implemented as an adjacency list
 # For each key in the graph there are a list of edge objects with
 # a keys: cost and to
-
-
-# NamedTuple is appropriate if we don't want the edge data to change
-class GraphEdge(NamedTuple):
-    cost: int
-    to: int
-
-
-# implement the graph as an adjacency list
-class AdjacencyListGraph:
-
-    def __init__(self):
-        self.vertices = {}
-
-    def __len__(self):
-        return len(self.vertices.keys())
-
-    def __contains__(self, n):
-        return n in self.vertices
-
-    def __getitem__(self, key):
-        return self.vertices[key]
-
-    def add_vertex(self, key):
-        if key not in self.vertices:
-            raise KeyError('Vertex already exists in the graph')
-        else:
-            self.vertices[key] = list()
-
-    def add_edge(self, f, t, cost):
-        if f not in self.vertices:
-            self.vertices[f] = list()
-        if t not in self.vertices:
-            self.vertices[t] = list()
-
-        ne = GraphEdge(cost, t)
-        self.vertices[f].append(ne)
-        return
-
 
 ########################## LAZY DIJKSTRA'S ALGORITHM ##################################
 # g - adjacency list of weighted graph
@@ -70,12 +32,18 @@ class AdjacencyListGraph:
 # This algorithm can be greatly improved by using:
 # an indexed priority queue, a D-ary heap or a fibonacci heap
 
+
 def lazy_dijkstra_short_path_value(g, n, s, e):
+    """
+    Finds the value of the shortest path from the start node d
+    to the end node e given a adjacency list graph
+    """
     vis = [0] * n
     prev = [None] * n
     dist = [inf] * n
     dist[0] = 0
     pq = PriorityQueue()
+    # note that priority queue sorts by the first value of a tuple by default
     pq.put((0, s))
 
     while pq.qsize() != 0:
@@ -102,6 +70,10 @@ def lazy_dijkstra_short_path_value(g, n, s, e):
 
 
 def lazy_dijkstra(g, n, s):
+    """
+    Given a weighted directed graph g and a start node s return the distance to each node. 
+    And the previous node visited before reaching the queried node on the optimal path.
+    """
     vis = [0] * n
     prev = [None] * n
     dist = [inf] * n
@@ -130,6 +102,9 @@ def lazy_dijkstra(g, n, s):
 
 
 def find_shortest_path(g, n, s, e):
+    """
+    Given a weighted directed graph g and a starting node s and end node e return the shortest path.
+    """
     dist, prev = lazy_dijkstra(g, n, s)
     path = []
     if (dist[e] == inf):

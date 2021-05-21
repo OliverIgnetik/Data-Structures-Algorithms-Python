@@ -1,20 +1,21 @@
-# Bellman Ford Algorithm in Python
+################################# Bellman Ford Algorithm in Python ################################
 
 # Bellman Ford algorithm helps us find the shortest path from a vertex
 # to all other vertices of a weighted graph. It is similar to Dijkstra's
 # algorithm but it can work with graphs in which edges can have negative weights.
 
-# Time Complexity
+################################# Time Complexity ################################
 # Best Case Complexity	O(E)
 # Average Case Complexity	O(VE)
 # Worst Case Complexity	O(VE)
 
-# Space Complexity
+################################# Space Complexity ################################
 # And, the space complexity is O(V)
 
-# Bellman Ford's Algorithm Applications
+################################ Applications ################################
 # 1. For calculating shortest paths in routing algorithms
 # 2. For finding the shortest path
+# 3. Performing an arbitrage between two or more markets
 
 class Graph:
 
@@ -58,6 +59,7 @@ class Graph:
         self.print_solution(dist)
 
 
+################################ TESTS ################################
 g = Graph(5)
 g.add_edge(0, 1, 5)
 g.add_edge(0, 2, 4)

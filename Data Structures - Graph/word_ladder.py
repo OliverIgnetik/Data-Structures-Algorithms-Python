@@ -1,3 +1,6 @@
+import sys
+sys.path.append(".\\Simple_graph_implementations")
+
 from Graph import Graph
 
 
@@ -13,14 +16,14 @@ def buildGraph(wordFile):
         # wildcard approach for letters
         # p_ll -> pull, poll, pill in the same bucket
         for i in range(len(word)):
-            bucket = word[:i] + '_' + word[i+1:]
+            bucket = word[:i] + '_' + word[i + 1:]
             print(bucket)
             if bucket in d:
                 d[bucket].append(word)
             else:
                 d[bucket] = [word]
 
-        print('-'*10)
+        print('-' * 10)
     # add vertices and edges for words in the same bucket
     for bucket in d.keys():
         # nested for loop to check connections
@@ -34,14 +37,14 @@ def buildGraph(wordFile):
 
 
 # build my graph
-print('-'*50)
+print('-' * 50)
 print('buckets of words')
-print('-'*50)
+print('-' * 50)
 g = buildGraph('words.txt')
 print('\n')
-print('-'*50)
+print('-' * 50)
 print('graph')
-print('-'*50)
+print('-' * 50)
 
 for vertex in g:
     print(vertex)
