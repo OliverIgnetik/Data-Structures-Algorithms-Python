@@ -2,7 +2,7 @@
 # https://www.youtube.com/watch?v=pSqmAO-m7Lk   WilliamFiset Dijkstra's algorithm
 # https://www.youtube.com/watch?v=jND_WJ8r7FE&list=PLDV1Zeh2NRsB6SWUrDFW2RmDotAfPbeHu&index=52&t=9s WilliamFiset Indexed Priority Queue
 import sys
-sys.path.append('..\\..\\Data Structures - Stacks and Queues')
+sys.path.append('..\\..\\Stacks and Queues')
 
 from queue import PriorityQueue
 from math import inf

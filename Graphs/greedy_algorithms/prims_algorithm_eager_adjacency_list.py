@@ -1,5 +1,5 @@
 import sys
-sys.path.append('../../Data Structures - Stacks and Queues')
+sys.path.append('../../Stacks and Queues')
 
 from math import inf
 from general_graph import make_complicated_graph2

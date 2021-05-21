@@ -1,5 +1,5 @@
 import sys
-sys.path.append('..\\..\\Data Structures - Trees\\heaps')
+sys.path.append('..\\..\\Trees\\heaps')
 
 from math import inf
 from typing import NamedTuple

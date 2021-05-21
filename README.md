@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository is language specific with algorithms and data structures implemented in `Python 3.85`. There are Jupyter Notebooks which cover the computer science theory needed in this repository. Also included in this repository, are helpful examples of some high level python concepts such as decorators.
+This repository is a collection of algorithms and data structures implemented in `Python 3.85`.Included are some helpful examples of more advanced Python concepts like decorators and abstract base classes.
 
 ### Data Structures
 
