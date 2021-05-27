@@ -11,8 +11,7 @@ from indexed_priority_queue_pydict import minpq
 # Tree (MST) is a subset of the edges in the graph which connects all the
 # vertices together (without creating cycles) while minimizing the total edge cost
 
-# Prim's is a greedy algorithm that work's well on dense graphs. On these
-# graphs, Prim's meets or improves on the time bounds of its rivals (Kruskal's and Boruvka's)
+# Prim's algorithm finds the MST on an undirected graph
 
 ###################################### DATA STRUCTURES ######################################
 ################ EDGE OBJECTS ################
@@ -20,8 +19,6 @@ from indexed_priority_queue_pydict import minpq
 # Although the graphs we will analyse will be undirected the edges will be represented
 # by two directed edges.
 # Each edge is of the form {start_node, end_node , cost}
-
-# this will work with python's PriorityQueue becuase it sorts on the first item
 
 ################ GRAPH ################
 # Undirected Adjacency list representation of a graph. Undirected edges are represented by two
@@ -35,14 +32,13 @@ from indexed_priority_queue_pydict import minpq
 # Note that by making use of an indexed priority queue/ D-ary heap we can
 # improve the performance on dense graphs due to the reduced cost of update vs delete operations.
 
-# NOTE: Python's standard library PriorityQueue sorts on the first input a tuple by default
-
 ###################################### TIME COMPLEXITY ######################################
 # Through the use of an Indexed Priority Queue the time complexity is:
 # T = O(ElogV)
 
-
 ###################################### IMPLEMENTATION ######################################
+
+
 def eager_prim(g, n, s=0):
 
     # helper function
@@ -68,7 +64,6 @@ def eager_prim(g, n, s=0):
     m = n - 1
     edgeCount, mstCost = 0, 0
     mstEdges = []
-    # inialize a priority queue with maxsize equal to the total number of edges
     ipq = minpq()
 
     relaxEdgesAtNode(s)

@@ -5,7 +5,7 @@ from math import inf
 # https://www.youtube.com/watch?v=lyw4FaxrwHg&list=PLDV1Zeh2NRsDGO4--qE8yH72HFL1Km93P&index=20
 # https://www.youtube.com/watch?v=vzBtJOdoRy8
 
-# Bellman Ford algorithm helps us find the shortest path from a vertex
+# Bellman Ford algorithm helps us find the shortest path from a starting vertex
 # to all other vertices of a weighted graph.
 # NOTE: It is similar to Dijkstra's algorithm but it can work with graphs in which edges can have negative weights.
 
@@ -33,7 +33,7 @@ def bellman_ford(g, n, s):
     dist[s] = 0
 
     # Cycle through every edge in the graph n times
-    for _ in range(n):
+    for _ in range(n - 1):
         for i in range(n):
             for edge in g[i]:
                 if (dist[edge.f] + edge.cost < dist[edge.t]):
@@ -44,7 +44,7 @@ def bellman_ford(g, n, s):
 
     # NOTE: The nodes which are connected to edges that can be relaxed
     # are given the value of inf
-    for _ in range(n):
+    for _ in range(n - 1):
         for i in range(n):
             for edge in g[i]:
                 if (dist[edge.f] + edge.cost < dist[edge.t]):
@@ -66,7 +66,6 @@ g.add_edge(3, 2, 3)
 
 start = 0
 distance_to_nodes = bellman_ford(g, len(g), start)
-end = 2
 for node in range(len(g)):
     print('The distance to node index {:<2d}is : {:<3d} units'.format(
         node, distance_to_nodes[node]))

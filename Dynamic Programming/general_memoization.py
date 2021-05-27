@@ -17,22 +17,22 @@ def fib(n):
     if n < 2:
         return n
     else:
-        return fib(n-1) + fib(n-2)
+        return fib(n - 1) + fib(n - 2)
 
 
 print(fib(4))
 
 
-class TestFib(object):
+# class TestFib(object):
 
-    def test(self, solution):
-        assert_equal(solution(10), 55)
-        assert_equal(solution(1), 1)
-        assert_equal(solution(23), 28657)
-        print('Passed all tests.')
+#     def test(self, solution):
+#         assert_equal(solution(10), 55)
+#         assert_equal(solution(1), 1)
+#         assert_equal(solution(23), 28657)
+#         print('Passed all tests.')
 
 
-# UNCOMMENT FOR CORRESPONDING FUNCTION
-t = TestFib()
+# # UNCOMMENT FOR CORRESPONDING FUNCTION
+# t = TestFib()
 
-t.test(fib)
+# t.test(fib)

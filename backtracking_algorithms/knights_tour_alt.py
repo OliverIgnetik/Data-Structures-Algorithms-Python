@@ -1,4 +1,13 @@
 
+################ TIME COMPLEXITY ######################
+# T = O(8^(N*N))
+
+################ SPACE COMPLEXITY ######################
+# S = O(N*N)
+
+
+################ IMPLEMENTATION ######################
+
 def genLegalMoves(x, y, visited, bdSize):
     newMoves = []
     # generic movesets
@@ -50,5 +59,5 @@ visited = [[0 for _ in range(bdsize)] for _ in range(bdsize)]
 visited[0][0] = 1
 
 print('KNIGHTS TOUR')
-print('-'*60)
+print('-' * 60)
 KnightTour(visited, 0, 0, 1, bdsize)

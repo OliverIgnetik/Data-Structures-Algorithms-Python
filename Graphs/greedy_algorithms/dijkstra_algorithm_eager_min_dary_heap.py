@@ -20,6 +20,12 @@ from directed_graph import AdjacencyListGraph
 # improving the time complexity to :
 # O(E*log_{E/V}(V))
 
+################# UNDERSTANDING DIFFERENT IPQ MAPPINGS ###########################
+
+# im - inverse mapping array, index = heap position of node, value = key index of node
+# pm - position mapping array, index = key index of node, value = heap position of node
+# values - values array, index = key index of node, value = value of node
+
 
 ##################### ALGORITHM IMPLEMENTATION ###############
 # In the PQ used in the lazy algorithm it's more efficient to insert a new
@@ -43,8 +49,7 @@ def dijkstra_dary_heap(g, n, s):
         vis[nodeId] = 1
         minValue = ipq.pollMinValue()
 
-        # if we have already visited the node then we
-        # can't get a shorter path
+        # optimization that ignores stale (index, dist) pairs
         if (minValue > dist[nodeId]):
             continue
 

@@ -21,7 +21,9 @@
 # out of the tree.
 
 ########################## TIME COMPLEXITY ##########################
-#  T = O(ElogV)
+#  T = O(ElogE)
+
+# NOTE: this is a lazy implementation of prim's algorithm
 
 ########################## APPLICATIONS ##########################
 
@@ -29,11 +31,19 @@
 # 2. In network design
 # 3. To make protocols in network cycles
 
+########################## IMPLEMENTATION ##########################
 INF = 9999999
 # number of vertices in graph
 V = 5
 # create a 2d array of size 5x5
 # for adjacency matrix to represent graph
+
+# the entries are encoded as follows:
+# the G[i][j] is the edge weight from the ith
+# vertex index to the jth vertex index
+
+# NOTE: the diagonal entries are all zero
+
 G = [[0, 9, 75, 0, 0],
      [9, 0, 95, 19, 42],
      [75, 95, 0, 51, 66],
@@ -60,14 +70,18 @@ while (no_edge < V - 1):
     x = 0
     y = 0
     for i in range(V):
+        # only scan the edges of selected nodes
         if selected[i]:
             for j in range(V):
+                # not in selected and there is an edge
                 if ((not selected[j]) and G[i][j]):
-                    # not in selected and there is an edge
+                    # update minimum if we find more optimal edge that
+                    # is connected to the selected nodes
                     if minimum > G[i][j]:
                         minimum = G[i][j]
                         x = i
                         y = j
     print(str(x) + "-" + str(y) + ":" + str(G[x][y]))
+    # set the next most promising node to True
     selected[y] = True
     no_edge += 1

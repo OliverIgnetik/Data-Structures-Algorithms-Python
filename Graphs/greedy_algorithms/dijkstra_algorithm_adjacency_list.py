@@ -13,13 +13,15 @@ from directed_graph import AdjacencyListGraph
 ################################ GRAPH DATA STRUCTURE ################################
 # g a weighted graph that is implemented as an adjacency list
 # For each key in the graph there are a list of edge objects with
-# a keys: cost and to
+# keys: cost and to
 
 ########################## LAZY DIJKSTRA'S ALGORITHM ##################################
 # g - adjacency list of weighted graph
 # n - the number of nodes in the graph
 # s - index of starting node (0 <= s < n)
 # e - index of end node (0 <= e < n)
+
+# This algorithm always selects the next most promising key-value pair from the PQ
 
 # This algorithm is lazy because we lazily delete outdated
 # key, value pairs in the priority queue.
@@ -28,6 +30,12 @@ from directed_graph import AdjacencyListGraph
 # But inserting a new key-value pair in O(logN) is much faster
 # then searching for the key in the PQ which takes O(N).
 # In PQs the elements are sorted by values not keys.
+
+# We make use of a visited array, vis, to track the visited node index
+# ie. so we don't revisit node indices. We also initialize a dist array
+# with all entries set to math.inf until we find a more optimum solution
+# Dijkstra's algorithm is a greedy algorithm becuase it queries the priority queue
+# for the local optimum solution
 
 # This algorithm can be greatly improved by using:
 # an indexed priority queue, a D-ary heap or a fibonacci heap
@@ -49,7 +57,7 @@ def lazy_dijkstra_short_path_value(g, n, s, e):
     while pq.qsize() != 0:
         minValue, index = pq.get()
         vis[index] = 1
-        # Optimization to non-optimal paths
+        # Optimization to ignore stale (dist, index) pairs
         if dist[index] < minValue:
             continue
         for edge in g[index]:
@@ -80,12 +88,13 @@ def lazy_dijkstra(g, n, s):
     dist[0] = 0
 
     pq = PriorityQueue()
+    # 2nd entry in tuple is the node index
     pq.put((0, s))
 
     while pq.qsize() != 0:
         minValue, index = pq.get()
         vis[index] = 1
-        # Optimization to non-optimal paths
+        # Optimization to ignore stale (dist, index) pairs
         if dist[index] < minValue:
             continue
         for edge in g[index]:
@@ -136,14 +145,14 @@ def find_shortest_path(g, n, s, e):
 # decreaseKey operations by increasing removal operations. Removal operations
 # are much less common in dense graphs.
 
-# The best degree, D, to use is D = E/V to balance removals against decreaseKey operations
+# The best degree, D, to use is D = E/V which balances removal against decreaseKey operations
 # improving the time complexity to :
-# O(E*log_{E/V}(V))
+# T = O(E*log_{E/V}(V))
 
 ############### Fibonacci Heap ###################
 # The current state of the art method uses a Fibonacci heap which gives Dijkstra's algorithm
 # a time complexity of:
-# O(E + VlogV)
+# T = O(E + VlogV)
 
 # However, it should be noted that Fibonacci heaps are notoriously difficult to implement and
 # have a large enough constant amortized overhead to make them impractical unless your
@@ -155,6 +164,7 @@ def find_shortest_path(g, n, s, e):
 def eager_dijkstra(g, n, s):
     vis = [0] * n
     dist = [inf] * n
+    prev = [None] * n
     dist[s] = 0
     ipq = minpq()
     ipq.additem(s, 0)
@@ -170,28 +180,43 @@ def eager_dijkstra(g, n, s):
             newDist = dist[index] + edge.cost
             if newDist < dist[edge.to]:
                 dist[edge.to] = newDist
+                prev[edge.to] = index
                 if edge.to not in ipq:
                     ipq.additem(edge.to, newDist)
                 else:
                     ipq.updateitem(edge.to, newDist)
-    return dist
+    return (dist, prev)
 
 
 ###################################### TESTS ##########################################
-g = AdjacencyListGraph()
+# this example will enter the stale node optimization check
+g1 = AdjacencyListGraph()
+g1.add_edge(0, 1, 4)
+g1.add_edge(0, 2, 1)
+g1.add_edge(2, 3, 5)
+g1.add_edge(1, 3, 1)
+g1.add_edge(3, 4, 3)
+g1.add_edge(2, 1, 2)
 
-g.add_edge(0, 1, 5)
-g.add_edge(1, 5, 1)
-g.add_edge(5, 4, 3)
-g.add_edge(1, 6, 2)
-g.add_edge(6, 4, 7)
-g.add_edge(4, 3, 8)
-g.add_edge(3, 2, 3)
+# this is a larger example
+g2 = AdjacencyListGraph()
+g2.add_edge(0, 1, 5)
+g2.add_edge(1, 5, 3)
+g2.add_edge(6, 5, 2)
+g2.add_edge(1, 4, 1)
+g2.add_edge(5, 4, 3)
+g2.add_edge(1, 6, 2)
+g2.add_edge(6, 4, 7)
+g2.add_edge(4, 3, 8)
+g2.add_edge(3, 2, 3)
+g2.add_edge(6, 1, 3)
+g2.add_edge(5, 0, 4)
 
 print('Lazy Implementation with Priority Queue')
 print('*' * 60)
-print('Path to the shortest node :', find_shortest_path(g, len(g), 0, 2))
+print('Path to the shortest node :', find_shortest_path(g2, len(g2), 0, 2))
 print()
 print('Eager Implementation with an Indexed Priority Queue')
 print('*' * 60)
-print('Distance to node indexes :', eager_dijkstra(g, len(g), 0))
+dist, prev = eager_dijkstra(g1, len(g1), 0)
+print('Distance to node indexes :', dist)

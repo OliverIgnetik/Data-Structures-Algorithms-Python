@@ -18,7 +18,7 @@
 
 # 2. Walk through the sorted edges and look at the two nodes the edge belongs to, if the
 # nodes are already unified we don't include this edge, otherwise we include it and unify the nodes
-# NOTE: it is crucial you don exclude the edge which joins nodes that are already unified or you will create a cycle
+# NOTE: it is crucial you exclude the edge which joins nodes that are already unified or you will create a cycle
 # which is not allowed in a MST
 
 # 3. The algorithm terminates when every edge has been processed or all the vertices have been unified.
@@ -72,20 +72,51 @@ class Graph:
             print("%d - %d: %d" % (u, v, weight))
 
 
-g = Graph(6)
-g.add_edge(0, 1, 4)
-g.add_edge(0, 2, 4)
-g.add_edge(1, 2, 2)
-g.add_edge(1, 0, 4)
-g.add_edge(2, 0, 4)
-g.add_edge(2, 1, 2)
-g.add_edge(2, 3, 3)
+g = Graph(10)
+g.add_edge(0, 2, 7)
+g.add_edge(0, 3, 1)
+g.add_edge(0, 9, 2)
+
+g.add_edge(1, 9, 3)
+g.add_edge(1, 2, 4)
+g.add_edge(1, 5, 0)
+g.add_edge(1, 6, 1)
+
+g.add_edge(2, 0, 7)
+g.add_edge(2, 9, 0)
+g.add_edge(2, 1, 4)
 g.add_edge(2, 5, 2)
-g.add_edge(2, 4, 4)
-g.add_edge(3, 2, 3)
-g.add_edge(3, 4, 3)
-g.add_edge(4, 2, 4)
-g.add_edge(4, 3, 3)
+g.add_edge(2, 4, 6)
+g.add_edge(2, 3, 2)
+
+g.add_edge(3, 0, 1)
+g.add_edge(3, 2, 2)
+g.add_edge(3, 4, 8)
+
+g.add_edge(4, 3, 8)
+g.add_edge(4, 2, 6)
+g.add_edge(4, 8, 1)
+g.add_edge(4, 7, 2)
+g.add_edge(4, 5, 4)
+
+g.add_edge(5, 4, 4)
+g.add_edge(5, 7, 3)
 g.add_edge(5, 2, 2)
-g.add_edge(5, 4, 3)
+g.add_edge(5, 1, 0)
+g.add_edge(5, 6, 2)
+
+g.add_edge(6, 5, 2)
+g.add_edge(6, 1, 1)
+
+g.add_edge(7, 8, 5)
+g.add_edge(7, 4, 2)
+g.add_edge(7, 5, 3)
+
+g.add_edge(8, 4, 1)
+g.add_edge(8, 7, 5)
+
+g.add_edge(9, 0, 2)
+g.add_edge(9, 2, 0)
+g.add_edge(9, 1, 3)
+
 g.kruskal_algo()

@@ -17,13 +17,13 @@ def sort_by_creation_time(cl):
     # set the init of the decorated class to the function defined above
     cl.__init__ = new_init
     # __lt__ and __gt__ are overloaded comparison operators
-    cl.__lt = lambda self, other: self._created < other._created
+    cl.__lt__ = lambda self, other: self._created < other._created
     cl.__gt__ = lambda self, other: self._created > other._created
     return cl
 
 
 @sort_by_creation_time
-class Sort(object):
+class Sort:
     def __init__(self, identifier):
         self.identifier = identifier
 

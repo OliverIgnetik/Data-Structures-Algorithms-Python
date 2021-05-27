@@ -1,5 +1,5 @@
 # RESOURCE
-# https://pypi.org/project/pqdict/0.1/
+# credit: https://pypi.org/project/pqdict/0.1/
 try:
     from collections.abc import MutableMapping as _MutableMapping
 except ImportError:
@@ -91,6 +91,7 @@ class pqdict(_MutableMapping):
     @property
     def keyfn(self):
         """Priority key function"""
+        # use of ternary operator to check if a function was provided
         return self._keyfn if self._keyfn is not None else lambda x: x
 
     def __repr__(self):

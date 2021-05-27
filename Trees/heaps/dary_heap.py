@@ -7,10 +7,19 @@ class minIndexedDHeap:
         self.N = max(self.D + 1, maxSize)
         self.size = 0
 
+        ################# UNDERSTANDING different mappings is crucial in IPQs ###########################
+        # im - inverse mapping array, index = heap position, value = key index
+        # pm - position mapping array, index = key index, value = heap position
+        # values - values array, index = key index, value = value
+
+        # given the position in the heap of the node what is the associated key index and value?
         self.im = [0] * self.N
+        # given the key index what is the heap index of that node in the heap?
         self.pm = [0] * self.N
+        # child and parent references are needed for a d-ary heap
         self.child = [0] * self.N
         self.parent = [0] * self.N
+        # given the certain key what is the value of that associated node?
         self.values = [0] * self.N
 
         for i in range(self.N):
