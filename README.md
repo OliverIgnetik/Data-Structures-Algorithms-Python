@@ -24,10 +24,11 @@ This repository is a collection of algorithms and data structures implemented in
 4. Traversals
    - Breadth First Search
    - Depth First Search
-5. Greedy Algorithms
+5. Graph Algorithms
    - Dijkstra's algorithm
    - Prim's algorithm
    - Bellman Ford algorithm
+   - Kruskal's algorithms
 6. Backtracking
 
 # Some helpful resources

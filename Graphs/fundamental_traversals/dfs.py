@@ -1,3 +1,7 @@
+##################### RESOURCES #####################
+# https://www.youtube.com/watch?v=PMMc4VsIacU Reducible
+# https://www.youtube.com/watch?v=TIbUeeksXcI&t=535s Back To Back SWE
+
 def dfs(graph, start):
     visited, stack = set(), [start]
     while stack:
