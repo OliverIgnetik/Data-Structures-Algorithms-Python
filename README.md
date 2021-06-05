@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository is a collection of algorithms and data structures implemented in `Python 3.85`.Included are some helpful examples of more advanced Python concepts like decorators and abstract base classes.
+This repository is a collection of algorithms and data structures python.Included are some helpful examples of more advanced Python concepts like decorators and abstract base classes. Please check the `anaconda-project.yml` file for dependencies and package versions.
 
 ### Data Structures
 
@@ -31,7 +31,7 @@ This repository is a collection of algorithms and data structures implemented in
    - Kruskal's algorithms
 6. Backtracking
 
-# Some helpful resources
+## Some helpful online resources
 
 - [Programiz Data Structures and Algorithms](https://www.programiz.com/dsa)
 - [Algotree Website](https://algotree.org/)

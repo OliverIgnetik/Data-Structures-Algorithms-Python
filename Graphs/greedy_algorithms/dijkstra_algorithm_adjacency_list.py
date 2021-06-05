@@ -112,7 +112,7 @@ def lazy_dijkstra(g, n, s):
 
 def find_shortest_path(g, n, s, e):
     """
-    Given a weighted directed graph g and a starting node s and end node e return the shortest path.
+    Given a weighted directed graph g, a starting node s and an end node e return the shortest path.
     """
     dist, prev = lazy_dijkstra(g, n, s)
     path = []
@@ -142,11 +142,11 @@ def find_shortest_path(g, n, s, e):
 ############### Optimal D-ary Heap ###############
 # A D-ary heap is a heap variant in which each node has D children.
 # The state of the art methods use D-ary heaps which reduce the cost of
-# decreaseKey operations by increasing removal operations. Removal operations
-# are much less common in dense graphs.
+# decreaseKey operations by increasing the cost of removal operations.
+# Removal operations are much less common in dense graphs.
 
-# The best degree, D, to use is D = E/V which balances removal against decreaseKey operations
-# improving the time complexity to :
+# The best degree, D, to use is D = E/V which balances the cost of removal against
+# decreaseKey operations, improving the time complexity to :
 # T = O(E*log_{E/V}(V))
 
 ############### Fibonacci Heap ###################

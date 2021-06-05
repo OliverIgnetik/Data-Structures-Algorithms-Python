@@ -7,7 +7,7 @@ class minIndexedDHeap:
         self.N = max(self.D + 1, maxSize)
         self.size = 0
 
-        ################# UNDERSTANDING different mappings is crucial in IPQs ###########################
+        ################# Understanding the different mappings is crucial in IPQs ###########################
         # im - inverse mapping array, index = heap position, value = key index
         # pm - position mapping array, index = key index, value = heap position
         # values - values array, index = key index, value = value
