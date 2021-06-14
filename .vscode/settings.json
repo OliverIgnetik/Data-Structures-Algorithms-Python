@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "C:\\Users\\olli\\Desktop\\Programming\\Python\\Python-data-structures\\envs\\default\\python.exe",
+    "python.pythonPath": "envs\\default\\python.exe",
     // "editor.formatOnSave": true,
     "python.formatting.autopep8Args": ["--ignore","E402"]  
 }

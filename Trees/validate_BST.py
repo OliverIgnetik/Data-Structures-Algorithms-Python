@@ -59,6 +59,26 @@ def verify(node):
         return False
 
 
+# This solution is probably the easiest
+def verify_BFS(node):
+    queue = []
+    queue.append(node)
+
+    while (len(queue) > 0):
+        cur = queue.pop(0)
+        if (cur.left):
+            if (cur.left.key < cur.key):
+                queue.append(cur.left)
+            else:
+                return False
+        if (cur.right):
+            if (cur.right.key > cur.key):
+                queue.append(cur.right)
+            else:
+                return False
+    return True
+
+
 ####################################### TEST #################################
 root = Node(5, "a")
 root.left = Node(2, "b")
@@ -69,6 +89,7 @@ root.right.left = Node(6, "f")
 root.right.right = Node(10, "g")
 
 print(verify(root))  # prints True, since this tree is valid
+print(verify_BFS(root))
 
 root = Node(5, "a")
 root.left = Node(2, "b")
@@ -79,3 +100,4 @@ root.right.left = Node(6, "f")
 root.right.right = Node(7, "g")
 
 print(verify(root))  # prints False
+print(verify_BFS(root))
