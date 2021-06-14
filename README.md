@@ -7,15 +7,30 @@ This repository is a collection of algorithms and data structures python.Include
 ### Data Structures
 
 1. Arrays
+   - Kadane's algorithm
 2. Graphs
+   - Directed and Undirected graphs
 3. Hashtables (dictionary)
+   - Rubin-Karp algorithm
 4. Linked Lists
+   - Doubly linked list
 5. Stack and Queues
+   - Indexed Priority Queues
+6. Trees
+   - Heaps
+     - Fibonacci heaps
+     - D-ary heaps
+   - Tries
+   - Binary Search Trees
+   - AVL Balancing Trees
 
 ### Algorithms
 
 1. Dynamic Programming
 2. Recursion
+   - Towers of Hanoi
+   - Coin change problems
+   - String Permutations
 3. Sorting
    - Merge sort
    - Radix sort
@@ -30,6 +45,8 @@ This repository is a collection of algorithms and data structures python.Include
    - Bellman Ford algorithm
    - Kruskal's algorithms
 6. Backtracking
+   - Knight's tour problem
+   - N-Queens problem
 
 ## Some helpful online resources
 
