@@ -1,18 +1,10 @@
 from nose.tools import assert_equal
 
 ################ Problem Definition #####################################
-
-# Given an integer array, output all the **unique** pairs that sum up to a specific value **k**.
-
-# So the input:
-
-#     pair_sum([1,3,2,2],4)
-
-# would return **2** pairs:
-
-#      (1,3)
-#      (2,2)
-
+"""
+Given two strings find if they are anagrams, that is contain the same letters 
+but in different order.
+"""
 ################ Solution #####################################
 
 
@@ -74,6 +66,6 @@ class AnagramTest(object):
 print(anagram('clint eastwood', 'old west action'))
 
 # Run Tests
-# t = AnagramTest()
-# t.test(anagram)
-# t.test(anagram2)
+t = AnagramTest()
+t.test(anagram)
+t.test(anagram2)

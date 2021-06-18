@@ -2,14 +2,13 @@
 def func(mylist):
 
     for i in range(0, len(mylist)):
-        for j in range(i+1, len(mylist)):
+        for j in range(i + 1, len(mylist)):
             if mylist[i] == mylist[j]:
                 return mylist[i]
     return 0
 
+
 # O(N) time complexity
-
-
 def hashtable(mylist):
     mydict = {}
     for i in range(0, len(mylist)):

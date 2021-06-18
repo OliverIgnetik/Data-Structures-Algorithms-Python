@@ -1,7 +1,9 @@
 from nose.tools import assert_equal
 
 ################ Problem Definition ###########################
-# Given an array of integers (positive and negative) find the largest continuous sum.
+"""
+Given an array of integers (positive and negative) find the largest continuous sum.
+"""
 
 ################ Solution #####################################
 

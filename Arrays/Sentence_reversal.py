@@ -1,25 +1,25 @@
 from nose.tools import assert_equal
 
 ################ Problem Definition #####################################
+"""
+Given a string of words, reverse all the words. For example:
 
-# Given a string of words, reverse all the words. For example:
+Given:
 
-# Given:
+    'This is the best'
 
-#     'This is the best'
+Return:
 
-# Return:
+    'best the is This'
 
-#     'best the is This'
+As part of this exercise you should remove all leading and trailing whitespace. So that inputs such as:
 
-# As part of this exercise you should remove all leading and trailing whitespace. So that inputs such as:
+    '  space here'  and 'space here      '
 
-#     '  space here'  and 'space here      '
+both become:
 
-# both become:
-
-#     'here space'
-
+    'here space'
+"""
 ################################# Solution ##############################
 
 

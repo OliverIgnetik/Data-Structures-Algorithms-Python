@@ -1,7 +1,56 @@
 # Python code to insert a node in AVL tree
-# Reference : https://www.geeksforgeeks.org/avl-tree-set-1-insertion/
+"""
+------------------------------
+References
+
+- https://www.geeksforgeeks.org/avl-tree-set-1-insertion/ GeeksToGeeks
+- https://www.youtube.com/watch?v=vRwi_UcZGjU&t=353s BackToBackSWE AVL trees
+------------------------------
+Overview
+
+AVL trees are BSTs that are self-balancing. 
+The reason why this is so beneficial is because BSTs
+have linear complexity when the tree becomes skewed.
+By doing this we can ensure a linear search complexity.
+
+AVL trees use a rebalancing threshold to check the difference in heights 
+between subtrees. At a node we can have:
+
+- left-heavy (left tree has a greater height)
+- right-heavy (right tree has a greater height)
+- balanced (equal height sub-trees)
+
+------------------------------
+RECURSIVE DEFINITION OF HEIGHT
+
+H(null) = -1
+H(single node) = 0
+
+H(n) = max(H(T_L), H(T_R)) + 1 
+------------------------------
+AVL PROPERTY
+
+NOTE: EVERY NODE MUST SATISFY THIS PROPERTY
+
+B(N) = H(T_L) - H(T_R)
+
++ve LEFT HEAVY
+
+-ve RIGHT HEAVY
+
+|B(n)| <= 1
+------------------------------
+ROTATIONS
+
+
+
+
+"""
+
 
 # Generic tree node class
+
+
 class TreeNode(object):
     def __init__(self, val):
         self.val = val
@@ -128,11 +177,12 @@ root = myTree.insert(root, 50)
 root = myTree.insert(root, 25)
 
 """The constructed AVL Tree would be
-			30
+		30
 		/ \
-		20 40
-		/ \	 \
-	10 25 50"""
+	   20 40
+	   / \	\
+	  10 25 50
+"""
 
 # Preorder Traversal
 print("Preorder traversal of the",

@@ -1,16 +1,16 @@
 # credit : https://www.geeksforgeeks.org/radix-sort/
-# resource : https://www.youtube.com/watch?v=5n8KZnQvf4k
+# resource : https://www.youtube.com/watch?v=5n8KZnQvf4k SimpleSnippets
 
-# Python program for implementation of Radix Sort
-# A function to do counting sort of arr[] according to
-# the digit represented by exp.
+"""
+Python program for implementation of Radix Sort
+A function to do counting sort of arr[] according to
+the digit represented by exp.
 
-##################### COMPLEXITY ANALYSIS #######################################
+######### COMPLEXITY ANALYSIS #########
 
-# Time complexity O(d(n + k))
-# Space complexity O(n + k)
-
-# where n is the number of keys and k is the
+Time complexity O(d(n + k))
+Space complexity O(n + k)
+"""
 
 
 def countingSort(arr, exp1):
@@ -35,7 +35,6 @@ def countingSort(arr, exp1):
 
     # Build the output array
     # notice this is done in reverse
-
     i = n - 1
     while i >= 0:
         index = (arr[i] / exp1)
@@ -72,5 +71,4 @@ arr = [170, 45, 75, 9511, 9512, 24, 2, 66]
 # Function Call
 radixSort(arr)
 
-for i in range(len(arr)):
-    print(arr[i])
+print(arr)
