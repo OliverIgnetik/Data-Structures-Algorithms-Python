@@ -6,17 +6,17 @@ class ListNode:
         self.val = val
         self.next = next
 
-    def __le__(self, other):
-        if self.val <= other.val:
-            return 1
-        else:
-            return 0
+    # def __le__(self, other):
+    #     if self.val <= other.val:
+    #         return 1
+    #     else:
+    #         return 0
 
-    def __lt__(self, other):
-        if self.val < other.val:
-            return 1
-        else:
-            return 0
+    # def __lt__(self, other):
+    #     if self.val < other.val:
+    #         return 1
+    #     else:
+    #         return 0
 
 
 # O(kN)
