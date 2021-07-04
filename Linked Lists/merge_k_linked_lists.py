@@ -1,4 +1,9 @@
 from queue import PriorityQueue
+"""
+NOTE: PriorityQueue will sort on the first item in the tuple
+Best Practice
+epq = (value, id(object), object)
+"""
 
 
 class ListNode:
@@ -19,11 +24,11 @@ class ListNode:
     #         return 0
 
 
-# O(kN)
 """
-You are comparing the first element from each linked list 
+O(kN)
+You are comparing the first element from each linked list
 O(k) to find the linked list with the smallest head
-N final nodes in the last linked list   
+N final nodes in the last linked list
 """
 
 
@@ -61,8 +66,8 @@ def mergeKLists(lists: list[ListNode]) -> ListNode:
             currentNode = currentNode.next
 
 
-# O(N*logk)
 """
+O(N*logk)
 Every pop and insertion takes O(logk)
 Finding the smallest value takes O(1)
 There are N nodes in the final linked list
