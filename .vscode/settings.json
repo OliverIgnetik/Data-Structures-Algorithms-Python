@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "envs\\default\\python.exe",
+    "python.defaultInterpreterPath": "envs\\default\\python.exe",
     // "editor.formatOnSave": true,
     "python.formatting.autopep8Args": ["--ignore","E402"]  
 }

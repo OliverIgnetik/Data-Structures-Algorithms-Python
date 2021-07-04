@@ -5,7 +5,6 @@
 ################ SPACE COMPLEXITY ######################
 # S = O(N*N)
 
-
 ################ IMPLEMENTATION ######################
 
 def genLegalMoves(x, y, visited, bdSize):

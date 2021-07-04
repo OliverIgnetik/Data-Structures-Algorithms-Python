@@ -42,7 +42,6 @@ def travellingSalesmanProblem(graph, s):
     return min_path
 
 
-# Driver Code
 if __name__ == "__main__":
 
     # matrix representation of graph

@@ -57,6 +57,6 @@ def summation(*args):
     return summ
 
 
-print(stringJoin("I ", 'like ', "Geeks", 'for', "geeks"))
+print(stringJoin("I ", "like ", "Geeks", "for", "geeks"))
 print()
 print(summation(19, 2, 8, 533, 67, 981, 119))

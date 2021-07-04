@@ -4,17 +4,17 @@ class MyDecorator:
         self.function = function
 
     def __call__(self):
-        print("Inside Function Call")
+        print("Inside __call__ of", self.function.__name__)
         self.function()
 
 
 @MyDecorator
-def function():
+def simple_function():
     print("GeeksforGeeks")
 
 
 def main():
-    function()
+    simple_function()
 
 
 if __name__ == "__main__":

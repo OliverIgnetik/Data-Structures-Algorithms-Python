@@ -2,9 +2,15 @@
 A naive recursive implementation
 of 0-1 Knapsack Problem
 
-Returns the maximum value that
-can be put in a knapsack of
-capacity W
+In the knapsack problem, you are given a set of objects that have weights and
+values and a knapsack that holds a certain amount of weight. Your goal is to find
+the items with the maximum value that will fit in the knapsack.
+
+inputs : values array and weights array
+output : returns the maximum value that fits in the knapsack
+
+NOTE: this is a 0/1 problem because we can not subdivide 
+the potential items
 
 References
 - https://www.geeksforgeeks.org/0-1-knapsack-problem-dp-10/
@@ -34,10 +40,7 @@ def knapSack(W, wt, val, n):
                 W - wt[n - 1], wt, val, n - 1),
             knapSack(W, wt, val, n - 1))
 
-# end of function knapSack
 
-
-# Driver Code
 val = [60, 100, 120]
 wt = [10, 20, 30]
 W = 50

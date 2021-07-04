@@ -6,7 +6,7 @@ def first_unique_chars(myStr):
         else:
             chars[x] = -1
 
-    for x in chars:
+    for x in myStr:
         if x != -1:
             return chars[x]
 
