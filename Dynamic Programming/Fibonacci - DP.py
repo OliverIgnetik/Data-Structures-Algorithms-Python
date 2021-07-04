@@ -1,4 +1,10 @@
 from functools import lru_cache
+"""
+Recursive Fibonacci 
+NOTE: the search space tree has two branches
+Time O(2^N)
+Space O(N)
+"""
 
 
 @lru_cache(maxsize=1000)
@@ -13,9 +19,11 @@ print(fib(10))
 print(fib.cache_info())
 
 
-# O(N) time complexity
-
-
+"""
+Memoized 
+Time O(N)
+Space O(N)
+"""
 cache = {}
 
 

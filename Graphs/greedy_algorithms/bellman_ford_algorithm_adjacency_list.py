@@ -1,26 +1,33 @@
 from general_graph import AdjacencyListGraph
 from math import inf
-################################# Bellman Ford Algorithm in Python ################################
-# RESOURCES
-# https://www.youtube.com/watch?v=lyw4FaxrwHg&list=PLDV1Zeh2NRsDGO4--qE8yH72HFL1Km93P&index=20
-# https://www.youtube.com/watch?v=vzBtJOdoRy8
+"""
+################################# Bellman Ford Algorithm (SSSP) ################################
+RESOURCES
+- https://www.youtube.com/watch?v=lyw4FaxrwHg&list=PLDV1Zeh2NRsDGO4--qE8yH72HFL1Km93P&index=20
+- https://www.youtube.com/watch?v=vzBtJOdoRy8
 
-# Bellman Ford algorithm helps us find the shortest path from a starting vertex
-# to all other vertices of a weighted graph.
-# NOTE: It is similar to Dijkstra's algorithm but it can work with graphs in which edges can have negative weights.
+Bellman Ford algorithm helps us find the shortest path from a starting vertex
+to all other vertices of a weighted graph.
+NOTE: It is similar to Dijkstra's algorithm BUT it can work with graphs in which edges can have negative weights.
 
+NOTE: No distinction is made between nodes that are directly in negative cycles and those 
+reachable by negative cycles
 ################################# Time Complexity ################################
-# The time complexity is on the order of O(EV). If the graph as no edges with negative
-# edges then it is better Dijkstra's algorithm
+The time complexity is on the order of: 
+O(EV) 
+
+If the graph has no edges with negative edges then it is better to use 
+Dijkstra's algorithm which is on the order of O((E+V)log(V))
 
 ################################# Space Complexity ################################
-# And, the space complexity is O(V)
+And, the space complexity is O(V)
 
 ################################ Applications ################################
-# 1. For calculating shortest paths in routing algorithms
-# 2. For finding the shortest path
-# 3. Performing an arbitrage between two or more markets
+1. For calculating shortest paths in routing algorithms when there are negative edge weights
+2. For finding the shortest path
+3. Performing an arbitrage between two or more markets
 
+"""
 ################################ IMPLEMENTATION ################################
 # Let E be the number of Edges
 # Let V be the number of Vertices
@@ -42,8 +49,7 @@ def bellman_ford(g, n, s):
     # Run the algorithm a second time to detect which nodes are part of a negative cycle
     # If we can relax an edge there this is a negative cycle
 
-    # NOTE: The nodes which are connected to edges that can be relaxed
-    # are given the value of inf
+    # NOTE: The nodes that are part of negative cycles are given the value of inf
     for _ in range(n - 1):
         for i in range(n):
             for edge in g[i]:

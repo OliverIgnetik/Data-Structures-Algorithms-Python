@@ -5,6 +5,7 @@ References
 
 - https://www.geeksforgeeks.org/avl-tree-set-1-insertion/ GeeksToGeeks
 - https://www.youtube.com/watch?v=vRwi_UcZGjU&t=353s BackToBackSWE AVL trees
+- https://bradfieldcs.com/algos/trees/avl-trees/ BradfieldCS 
 ------------------------------
 Overview
 

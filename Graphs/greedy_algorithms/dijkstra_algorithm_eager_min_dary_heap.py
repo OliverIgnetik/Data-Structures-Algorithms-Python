@@ -6,34 +6,38 @@ from typing import NamedTuple
 from dary_heap import minIndexedDHeap
 from directed_graph import AdjacencyListGraph
 
+"""
 ################### DATA STRUCTURES ##############################
-# Resources
-# https://www.youtube.com/watch?v=pSqmAO-m7Lk   WilliamFiset Dijkstra's algorithm
+Resources
+- https://www.youtube.com/watch?v=pSqmAO-m7Lk   WilliamFiset Dijkstra's algorithm
 
 ############### Optimal D-ary Heap ###############
-# A D-ary heap is a heap variant in which each node has D children.
-# The state of the art methods use D-ary heaps which reduce the cost of
-# decreaseKey operations by increasing the cost of removal operations
-# compared to an Indexed Priority Queue. Removal operations are much less common in dense graphs.
+A D-ary heap is a heap variant in which each node has D children.
+The state of the art methods use D-ary heaps which reduce the cost of
+decreaseKey operations by increasing the cost of removal operations
+compared to an Indexed Priority Queue. Removal operations are much less common in dense graphs.
 
-# The best degree, D, to use is D = E/V to balance removals against decreaseKey operations
-# improving the time complexity to :
-# O(E*log_{E/V}(V))
+The best degree, D, to use is D = E/V to balance removals against decreaseKey operations
+improving the time complexity to :
+O(E*log_{E/V}(V))
 
 ################# UNDERSTANDING DIFFERENT IPQ MAPPINGS ###########################
 
-# im - inverse mapping array, index = heap position of node, value = key index of node
-# pm - position mapping array, index = key index of node, value = heap position of node
-# values - values array, index = key index of node, value = value of node
+im - inverse mapping array, index = heap position of node, value = key index of node
+pm - position mapping array, index = key index of node, value = heap position of node
+values - values array, index = key index of node, value = value of node
 
 
 ##################### ALGORITHM IMPLEMENTATION ###############
-# In the PQ used in the lazy algorithm it's more efficient to insert a new
-# key-value pair in O(logN) then it is to update an existing key's value
+In the PQ used in the lazy algorithm it's more efficient to insert a new
+key-value pair in O(logN) then it is to update an existing key's value
 
-# This is inefficient for dense graphs because we end up with several stale
-# outdated key-value pairs in our PQ. The eager version avoids duplicate key-value
-# pairs by O(logN) updates using an min D-ary heap.
+This is inefficient for dense graphs because we end up with several stale
+outdated key-value pairs in our PQ. The eager version avoids duplicate key-value
+pairs by O(logN) updates using an min D-ary heap.
+"""
+
+
 def dijkstra_dary_heap(g, n, s):
     vis = [0] * n
     dist = [inf] * n

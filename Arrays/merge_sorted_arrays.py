@@ -1,18 +1,26 @@
-# def mergesortedarr(a,b):
-#  x=a+b
-#  x.sort()
-#  return x
+"""
+Pythonic solution with:
+Time : O((A+B)log(A+B))
+Space : O(A+B)
+"""
 
-# a=[1,2,3,4]
-# b=[3,7,9,12]
-# qw=mergesortedarr(a,b)
-# print(qw)
+
+def mergesortedarr_pythonic(a, b):
+    x = a + b
+    x.sort()
+    return x
+
+
+a = [1, 2, 3, 4]
+b = [3, 7, 9, 12]
+qw = mergesortedarr(a, b)
+print(qw)
+
 
 # Typical solution using a while loop with two guards
-
 def mergesortedarr(a, b):
     if len(a) == 0 or len(b) == 0:
-        return a+b
+        return a + b
     mylist = []
     i = 0
     j = 0
@@ -26,7 +34,7 @@ def mergesortedarr(a, b):
             mylist.append(b[j])
             j += 1
 
-    return mylist+a[i:]+b[j:]
+    return mylist + a[i:] + b[j:]
 
 
 a = [1, 3, 4, 6, 20]

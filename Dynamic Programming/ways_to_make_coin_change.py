@@ -1,4 +1,26 @@
-# total number of ways to make up target value
+"""
+Goal : Total number of ways to make up target value
+
+@Params 
+- Input
+    - n = the target value 
+    - coins = available coin denominations
+- Output 
+    - Total number of ways to make change from target value
+
+Runtime
+A is the amount to make change for 
+D is the total denominations available to us 
+
+Time
+O(A*D)
+We have to solve D subproblems A times
+
+Space 
+O(A)
+We only need to store A values
+"""
+
 
 def solution(n, coins):
 

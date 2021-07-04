@@ -1,7 +1,12 @@
 from queue import PriorityQueue
 
+"""
+Sorting method will most likely be quick sort or merge sort 
+O(NlogN)
+Access is constant time
+"""
 
-# O(NlogN)
+
 def simple_method(arr, k):
     arr.sort()
     return arr[len(arr) - k]
@@ -12,7 +17,7 @@ O(N*logK) Approach with heap
 
 We throw away items smaller then
 the kth largest item. So that when we grab the smallest item
-left in the heap is the second largest item.
+left in the heap is the kth largest item.
 """
 
 
@@ -86,10 +91,10 @@ def kthLargest(arr, k):
     while left <= right:
         # Random pivot index will ensure on average we avoid
         # O(N^2) runtime
-        choosen_pivot_index = random.randint(left, right)
+        pivot_index = random.randint(left, right)
 
         chosen_pivot_index = partition(
-            arr, left, right, choosen_pivot_index)
+            arr, left, right, pivot_index)
 
         # What does the 'finalIndexOfChoosenPivot' tell us?
         if (chosen_pivot_index == n - k):
@@ -110,4 +115,5 @@ def kthLargest(arr, k):
 
 arr = [8, 1, 3, 2, 6, 7]
 
+print(heap_approach(arr, 2))
 print(kthLargest(arr, 2))

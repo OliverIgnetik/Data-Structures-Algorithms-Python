@@ -1,35 +1,38 @@
-################################ Prim's Algorithm in Python ################################
+""""
+################################ Prim's Algorithm ################################
 
-# Resources
-# https://www.youtube.com/watch?v=MaaSoZUEoos Joe James
-# https://www.youtube.com/watch?v=K_1urzWrzLs BacktoBackSWE
-# https://www.youtube.com/watch?v=jsmMtJpPnhU&list=PLDV1Zeh2NRsDGO4--qE8yH72HFL1Km93P&index=30 WilliamFiset
-# https://www.programiz.com/dsa/prim-algorithm Programiz
+Resources
+- https://www.youtube.com/watch?v=MaaSoZUEoos Joe James
+- https://www.youtube.com/watch?v=K_1urzWrzLs BacktoBackSWE
+- https://www.youtube.com/watch?v=jsmMtJpPnhU&list=PLDV1Zeh2NRsDGO4--qE8yH72HFL1Km93P&index=30 WilliamFiset
+- https://www.programiz.com/dsa/prim-algorithm Programiz
 
-# Prim's algorithm finds the minimum spanning tree of a weighted graph
-# Minimum Spanning Tree subset of edges that:
+Prim's algorithm finds the minimum spanning tree (MST) of a weighted graph
+Minimum Spanning Tree subset of edges that:
 
-# 1. Reaches every vertex
-# 2. Has no minimum total weight
-# 3. Has no cycles
+1. Reaches every vertex
+2. Has no minimum total weight
+3. Has no cycles
 
-# Prim's algorithm does this by building a tree from a single
-# vertex by adding the cheapest edge to an unmapped vertex. In
-# other words it works on local optimization.
+Prim's algorithm does this by building a tree from a single
+vertex by adding the cheapest edge to an unmapped vertex. In
+other words it works on local optimization.
 
-# We can make use of a tree perimeter to select the best edge
-# out of the tree.
+We can make use of a tree perimeter to select the best edge
+out of the tree.
 
 ########################## TIME COMPLEXITY ##########################
-#  T = O(ElogE)
+ T = O(ElogE)
 
-# NOTE: this is a lazy implementation of prim's algorithm
+NOTE: this is a lazy implementation of prim's algorithm
 
 ########################## APPLICATIONS ##########################
 
-# 1. Laying cables of electrical wiring
-# 2. In network design
-# 3. To make protocols in network cycles
+1. Laying cables of electrical wiring
+2. In network design
+3. To make protocols in network cycles
+
+"""
 
 ########################## IMPLEMENTATION ##########################
 INF = 9999999
@@ -43,7 +46,6 @@ V = 5
 # vertex index to the jth vertex index
 
 # NOTE: the diagonal entries are all zero
-
 G = [[0, 9, 75, 0, 0],
      [9, 0, 95, 19, 42],
      [75, 95, 0, 51, 66],

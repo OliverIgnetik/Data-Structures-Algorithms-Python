@@ -1,10 +1,49 @@
-# https://bradfieldcs.com/algos/graphs/knights-tour/
+"""
+##########################################################
+Overview 
+Trace the path that a knight makes on an NxN chessboard 
+Conditions
+The knight must only visit each square once
+
+##########################################################
+Runtime Complexity
+##########################################################
+NOTE: the search space tree is related to time complexity 
+NOTE: the graph size is related to space complexity
+Time 
+
+O(k^N)
+k = average branching factor
+NOTE: Key tree theory 
+Nodes in a binary tree of height N = 2^N - 1  
+Nodes in a general tree of height N = k^N - 1
+
+- For a board that is 5x5 the search space tree will be 25 levels deep (counting the first level as 1). 
+  k = 3.8 and there are : 
+    3.8^25-1 = 3.12 x 10^14 nodes
+- For an 8x8 board the search space tree will be 64 levels deep
+  k = 5.25 and there are : 
+    1.3x10^46 nodes
+
+Remember that there are multiple solutions to the problem so we don't have to explore every node. 
+
+##########################################################
+Space
+O(N^2)
+There are NxN nodes in the graph
+
+##########################################################
+Resources
+- https://bradfieldcs.com/algos/graphs/knights-tour/ implementation hints
+- https://runestone.academy/runestone/books/published/pythonds/Graphs/KnightsTourAnalysis.html time complexity 
+"""
+
 
 class Vertex:
     def __init__(self, key):
         self.id = key
         self.connectedTo = {}
-        self.__color = 'white'
+        self.setColor('white')
 
     def addNeighbor(self, nbr, weight=0):
         self.connectedTo[nbr] = weight
@@ -43,6 +82,7 @@ class Graph:
         if n in self.vertList:
             return self.vertList[n]
         else:
+            # explict return None statement
             return None
 
     def __contains__(self, n):
@@ -61,8 +101,11 @@ class Graph:
     def __iter__(self):
         return iter(self.vertList.values())
 
-# use a adjacency list because otherwise the matrix will be about 8% full
-# we use a DFS search tree for exhaustive path searching
+
+"""
+Use an adjacency list because otherwise the matrix will be about 8% full
+we use a DFS search tree for exhaustive path searching
+"""
 
 
 def knightGraph(bdSize):
@@ -84,7 +127,7 @@ def posToNodeId(row, column, board_size):
 
 
 def nodeIdToPos(nodeId, board_size):
-    return (nodeId//board_size, nodeId % board_size)
+    return (nodeId // board_size, nodeId % board_size)
 
 
 def genLegalMoves(x, y, bdSize):
@@ -121,7 +164,7 @@ def knightTour(n, path, u, limit):
         # go through all the neighbours until you find one that solves the problem
         while i < len(nbrList) and not done:
             if nbrList[i].getColor() == 'white':
-                done = knightTour(n+1, path, nbrList[i], limit)
+                done = knightTour(n + 1, path, nbrList[i], limit)
             i = i + 1
         # if you don't find any solutions backtrack
         # ie. this part of the search space returns false
@@ -145,7 +188,7 @@ depth = 1
 
 knights_tour = knightTour(depth, path, start_point, limit)
 print('MOVE SEQUENCE')
-print('-'*60)
+print('-' * 60)
 for node in path:
     print(
         'node id : {:<10d} position : {:<20s}'.format(node.getId(), str(nodeIdToPos(node.getId(), dimensions))))

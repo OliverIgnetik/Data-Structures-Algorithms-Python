@@ -1,8 +1,13 @@
-# BFS and DFS explanation
-# https://www.youtube.com/watch?v=TIbUeeksXcI&t=532s
+"""
+Traversals OOP approach 
 
-# REFERENCE FOR CODE
-# https://www.youtube.com/watch?v=-uR7BSfNJko&t=421s
+BFS and DFS explanation
+- https://www.youtube.com/watch?v=TIbUeeksXcI&t=532s
+
+REFERENCE FOR CODE
+- https://www.youtube.com/watch?v=-uR7BSfNJko&t=421s
+"""
+
 
 class Vertex:
     def __init__(self, n):
@@ -57,6 +62,7 @@ class Graph:
             u = q.pop(0)
             node_u = self.vertices[u]
             # This condition is needed to avoid processing the same node more then once
+            # There will be stale nodes that we have already visited on the queue
             if node_u.color == 'black':
                 node_u.color = 'red'
                 print(node_u.name)
@@ -105,12 +111,12 @@ for edge in edges:
     g.add_edge(edge[:1], edge[1:])
 
 print('BFS Traversal')
-print('-'*60)
+print('-' * 60)
 g.bfs(g.vertices['C'])
 print()
 
 print('GRAPH AFTER BFS')
-print('-'*60)
+print('-' * 60)
 g.print_graph()
 print()
 
@@ -120,5 +126,5 @@ for vertex in g.vertices.values():
 
 # look for a path between C and E
 print('DFS Traversal up to target')
-print('-'*60)
+print('-' * 60)
 g.dfs(g.vertices['C'], 'E')

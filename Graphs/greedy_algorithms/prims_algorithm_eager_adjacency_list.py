@@ -5,36 +5,39 @@ from math import inf
 from general_graph import make_complicated_graph2
 from indexed_priority_queue_pydict import minpq
 
+"""
 ###################################### OVERVIEW #####################################
 
-# Given an undirected graph with weighted edges, a Minimum Spanning
-# Tree (MST) is a subset of the edges in the graph which connects all the
-# vertices together (without creating cycles) while minimizing the total edge cost
+Given an undirected graph with weighted edges, a Minimum Spanning
+Tree (MST) is a subset of the edges in the graph which connects all the
+vertices together (without creating cycles) while minimizing the total edge cost
 
-# Prim's algorithm finds the MST on an undirected graph
+Prim's algorithm finds the MST on an undirected graph
 
 ###################################### DATA STRUCTURES ######################################
 ################ EDGE OBJECTS ################
-# It makes use of a minimum priority queue that sorts edges based on minimum edge cost
-# Although the graphs we will analyse will be undirected the edges will be represented
-# by two directed edges.
-# Each edge is of the form {start_node, end_node , cost}
+It makes use of a minimum priority queue that sorts edges based on minimum edge cost
+Although the graphs we will analyse will be undirected the edges will be represented
+by two directed edges.
+Each edge is of the form {start_node, end_node , cost}
 
 ################ GRAPH ################
-# Undirected Adjacency list representation of a graph. Undirected edges are represented by two
-# directed edges.
+Undirected Adjacency list representation of a graph. Undirected edges are represented by two
+directed edges.
 
-# NamedTuple is appropriate if we don't want the edge data to change
+NamedTuple is appropriate if we don't want need to change the __lt__ dunder method
 
 ################ PRIORITY QUEUE ################
-# We need to make use of minimum priority queue to track the local optimum edge choice
-# For the eager implementation we will use .
-# Note that by making use of an indexed priority queue/ D-ary heap we can
-# improve the performance on dense graphs due to the reduced cost of update vs delete operations.
+We need to make use of minimum priority queue to track the local optimum edge choice. 
+NOTE: that by making use of an indexed priority queue/ D-ary heap we can improve the performance 
+on dense graphs due to the reduced cost of update vs delete operations. 
+
+NOTE: By using an IPQ we will avoid stale edges. 
 
 ###################################### TIME COMPLEXITY ######################################
-# Through the use of an Indexed Priority Queue the time complexity is:
-# T = O(ElogV)
+Through the use of an Indexed Priority Queue the time complexity is:
+T = O(ElogV)
+"""
 
 ###################################### IMPLEMENTATION ######################################
 

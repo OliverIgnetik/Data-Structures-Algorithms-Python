@@ -3,6 +3,9 @@ from nose.tools import assert_equal
 ################ Problem Definition ###########################
 """
 Given an array of integers (positive and negative) find the largest continuous sum.
+This solution is very similar to Kadane's algorithm
+Time : O(N)
+Space : O(1)
 """
 
 ################ Solution #####################################

@@ -1,8 +1,9 @@
-############################# TRIES #####################################
-# REFERENCES
-# https://www.youtube.com/watch?v=-urNrIAQnNo Lukas Vyhnalek
-# https://www.youtube.com/watch?v=giiaIofn31A Michael Muinos
 """
+############################# TRIES #####################################
+REFERENCES
+https://www.youtube.com/watch?v=-urNrIAQnNo Lukas Vyhnalek
+https://www.youtube.com/watch?v=giiaIofn31A Michael Muinos
+
 Tries (also known as radix trees or prefix trees) are tree-based data structures 
 that are typically used to store associative arrays where the
 keys are usually strings. Since they also implement associative arrays, tries 

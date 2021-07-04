@@ -1,6 +1,8 @@
-# Resources
-# https://www.youtube.com/watch?v=pSqmAO-m7Lk   WilliamFiset Dijkstra's algorithm
-# https://www.youtube.com/watch?v=jND_WJ8r7FE&list=PLDV1Zeh2NRsB6SWUrDFW2RmDotAfPbeHu&index=52&t=9s WilliamFiset Indexed Priority Queue
+"""
+Resources
+- https://www.youtube.com/watch?v=pSqmAO-m7Lk   WilliamFiset Dijkstra's algorithm
+- https://www.youtube.com/watch?v=jND_WJ8r7FE&list=PLDV1Zeh2NRsB6SWUrDFW2RmDotAfPbeHu&index=52&t=9s WilliamFiset Indexed Priority Queue
+"""
 import sys
 sys.path.append('..\\..\\Stacks and Queues')
 
@@ -10,35 +12,37 @@ from typing import NamedTuple
 from indexed_priority_queue_pydict import minpq
 from directed_graph import AdjacencyListGraph
 
+"""
 ################################ GRAPH DATA STRUCTURE ################################
-# g a weighted graph that is implemented as an adjacency list
-# For each key in the graph there are a list of edge objects with
-# keys: cost and to
+g a weighted graph that is implemented as an adjacency list
+For each key in the graph there are a list of edge objects with
+keys: cost and to
 
 ########################## LAZY DIJKSTRA'S ALGORITHM ##################################
-# g - adjacency list of weighted graph
-# n - the number of nodes in the graph
-# s - index of starting node (0 <= s < n)
-# e - index of end node (0 <= e < n)
+g - adjacency list of weighted graph
+n - the number of nodes in the graph
+s - index of starting node (0 <= s < n)
+e - index of end node (0 <= e < n)
 
-# This algorithm always selects the next most promising key-value pair from the PQ
+This algorithm always selects the next most promising key-value pair from the PQ
 
-# This algorithm is lazy because we lazily delete outdated
-# key, value pairs in the priority queue.
+This algorithm is lazy because we lazily delete outdated
+key, value pairs in the priority queue.
 
-# We may have duplicate vertex indices in the priority queue (PQ)
-# But inserting a new key-value pair in O(logN) is much faster
-# then searching for the key in the PQ which takes O(N).
-# In PQs the elements are sorted by values not keys.
+We may have duplicate vertex indices in the priority queue (PQ)
+But inserting a new key-value pair in O(logN) is much faster
+then searching for the key in the PQ which takes O(N).
+In PQs the elements are sorted by values not keys.
 
-# We make use of a visited array, vis, to track the visited node index
-# ie. so we don't revisit node indices. We also initialize a dist array
-# with all entries set to math.inf until we find a more optimum solution
-# Dijkstra's algorithm is a greedy algorithm becuase it queries the priority queue
-# for the local optimum solution
+We make use of a visited array, vis, to track the visited node index
+ie. so we don't revisit node indices. We also initialize a dist array
+with all entries set to math.inf until we find a more optimum solution
+Dijkstra's algorithm is a greedy algorithm becuase it queries the priority queue
+for the local optimum solution
 
-# This algorithm can be greatly improved by using:
-# an indexed priority queue, a D-ary heap or a fibonacci heap
+This algorithm can be greatly improved by using:
+an indexed priority queue, a D-ary heap or a fibonacci heap
+"""
 
 
 def lazy_dijkstra_short_path_value(g, n, s, e):
@@ -127,39 +131,40 @@ def find_shortest_path(g, n, s, e):
     return list(reversed(path))
 
 
+"""
 ########################## EAGER DIJKSTRA'S ALGORITHM ##################################
 # USEFUL DATA STRUCTURES
 ############### IndexedMinPQ ###############
-# In the PQ used in the lazy algorithm it's more efficient to insert a new
-# key-value pair in O(logN) then it is to update an existing key's value
+In the PQ used in the lazy algorithm it's more efficient to insert a new
+key-value pair in O(logN) then it is to update an existing key's value
 
-# This is inefficient for dense graphs because we end up with several stale
-# outdated key-value pairs in our PQ. The eager version avoids duplicate key-value
-# pairs by O(logN) updates using an Indexed Priority Queue (IPQ)
+This is inefficient for dense graphs because we end up with several stale
+outdated key-value pairs in our PQ. The eager version avoids duplicate key-value
+pairs by O(logN) updates using an Indexed Priority Queue (IPQ)
 
-# Resource: https://pypi.org/project/pqdict/0.1/
+Resource: https://pypi.org/project/pqdict/0.1/
 
 ############### Optimal D-ary Heap ###############
-# A D-ary heap is a heap variant in which each node has D children.
-# The state of the art methods use D-ary heaps which reduce the cost of
-# decreaseKey operations by increasing the cost of removal operations.
-# Removal operations are much less common in dense graphs.
+A D-ary heap is a heap variant in which each node has D children.
+The state of the art methods use D-ary heaps which reduce the cost of
+decreaseKey operations by increasing the cost of removal operations.
+Removal operations are much less common in dense graphs.
 
-# The best degree, D, to use is D = E/V which balances the cost of removal against
-# decreaseKey operations, improving the time complexity to :
-# T = O(E*log_{E/V}(V))
+The best degree, D, to use is D = E/V which balances the cost of removal against
+decreaseKey operations, improving the time complexity to :
+T = O(E*log_{E/V}(V))
 
 ############### Fibonacci Heap ###################
-# The current state of the art method uses a Fibonacci heap which gives Dijkstra's algorithm
-# a time complexity of:
-# T = O(E + VlogV)
+The current state of the art method uses a Fibonacci heap which gives Dijkstra's algorithm
+a time complexity of:
+T = O(E + VlogV)
 
-# However, it should be noted that Fibonacci heaps are notoriously difficult to implement and
-# have a large enough constant amortized overhead to make them impractical unless your
-# graph is quite large.
-
-
+However, it should be noted that Fibonacci heaps are notoriously difficult to implement and
+have a large enough constant amortized overhead to make them impractical unless your
+graph is quite large.
+"""
 ############## IMPLEMENTATION OF IPQ EAGER DIJKSTRA ####################
+
 
 def eager_dijkstra(g, n, s):
     vis = [0] * n

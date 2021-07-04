@@ -1,4 +1,11 @@
-# O(N^2)
+"""
+Naive approach
+Time : O(N^2)
+Space : O(K)
+where K is the length of the running sub array
+"""
+
+
 def quadratic_approach(arr):
     maxSum = -float('inf')
     maxSub = []
@@ -16,7 +23,14 @@ def quadratic_approach(arr):
     return [maxSum, maxSub]
 
 
-# O(N)
+"""
+Kadane's algorithm
+Time : O(N)
+Space : O(K)
+where K is the length of the running sub array
+"""
+
+
 def kadane_algorithm(arr):
     runningSum = arr[0]
     maxSum = arr[0]

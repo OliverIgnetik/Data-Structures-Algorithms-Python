@@ -1,27 +1,30 @@
+"""
 ######################## Kruskal's algorithm ########################
-# Given an undirected graph with weighted edges, a Minimum Spanning
-# Tree (MST) is a subset of the edges in the graph which connects all the
-# vertices together (without creating cycles) while minimizing the total edge cost
+Given an undirected graph with weighted edges, a Minimum Spanning
+Tree (MST) is a subset of the edges in the graph which connects all the
+vertices together (without creating cycles) while minimizing the total edge cost
 
-# TIME COMPLEXITY
-# T = O(ElogV)
+TIME COMPLEXITY
+T = O(ElogV)
 
-# RESOURCES
-# https://www.youtube.com/watch?v=JZBQLXgSGfs William Fiset Kruskal's algorithm
-# https://www.youtube.com/watch?v=0jNmHPfA_yE Union find operation
-# https://www.youtube.com/watch?v=qOv8K-AJ7o0&t=35s Back To Back SWE Kruskal's algorithm
-# https://www.hackerearth.com/practice/algorithms/graphs/minimum-spanning-tree/tutorial/ hackerearth MST
+RESOURCES
+- https://www.youtube.com/watch?v=JZBQLXgSGfs William Fiset Kruskal's algorithm
+- https://www.youtube.com/watch?v=0jNmHPfA_yE Union find operation
+- https://www.youtube.com/watch?v=qOv8K-AJ7o0&t=35s BackToBackSWE Kruskal's algorithm
+- https://www.hackerearth.com/practice/algorithms/graphs/minimum-spanning-tree/tutorial/ hackerearth MST
 
 ############ IMPLEMENTATION ############
 
-# 1. Sort edges by ascending edge weight
+1. Sort edges by ascending edge weight
 
-# 2. Walk through the sorted edges and look at the two nodes the edge belongs to, if the
-# nodes are already unified we don't include this edge, otherwise we include it and unify the nodes
-# NOTE: it is crucial you exclude the edge which joins nodes that are already unified or you will create a cycle
-# which is not allowed in a MST
+2. Walk through the sorted edges and look at the two nodes the edge belongs to, if the
+nodes are already unified we don't include this edge, otherwise we include it and unify the nodes
+NOTE: it is crucial you exclude an edge which joins nodes that are already unified or you will create a cycle
+which is not allowed in a MST
 
-# 3. The algorithm terminates when every edge has been processed or all the vertices have been unified.
+3. The algorithm terminates when every edge has been processed or all the vertices have been unified.
+"""
+
 
 class Graph:
     def __init__(self, vertices):

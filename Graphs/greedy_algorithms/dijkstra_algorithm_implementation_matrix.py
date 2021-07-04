@@ -1,31 +1,31 @@
-# Resources
-# https://www.youtube.com/watch?v=pSqmAO-m7Lk   WilliamFiset
-# https://www.youtube.com/watch?v=pVfj6mxhdMw Computer Science
-# https://www.youtube.com/watch?v=K_1urzWrzLs BacktoBackSWE
-# https://www.programiz.com/dsa/dijkstra-algorithm  Programiz
-# https://www.youtube.com/watch?v=U9Raj6rAqqs&list=PLj8W7XIvO93oxLOZTi8JFghuRcKieIZU-&index=3 Joe James
+"""
+Resources
+https://www.youtube.com/watch?v=pSqmAO-m7Lk   WilliamFiset
+https://www.youtube.com/watch?v=pVfj6mxhdMw Computer Science
+https://www.youtube.com/watch?v=K_1urzWrzLs BacktoBackSWE
+https://www.programiz.com/dsa/dijkstra-algorithm  Programiz
+https://www.youtube.com/watch?v=U9Raj6rAqqs&list=PLj8W7XIvO93oxLOZTi8JFghuRcKieIZU-&index=3 Joe James
 
 
 ################################ Dijkstra's Algorithm in Python ################################
 
 ################################ OVERVIEW ################################
-# It is a greedy algorithm because it selects the locally optimum solution.
-# Dijkstra's algorithm finds the shortest path in a connected graph.
-# It does this by using a priority queue to help with choosing the local
-# optimum. The algorithm also keeps track of the visited vertices, and
-# the distance to each vertex. We can reconstruct the path to the target vertex
-# by keeping track of the vertex that was visited preceeding the current vertex.
+It is a greedy algorithm because it selects the locally optimum solution.
+Dijkstra's algorithm finds the shortest path in a connected graph.
+It does this by using a priority queue to help with choosing the local
+optimum. The algorithm also keeps track of the visited vertices, and
+the distance to each vertex. We can reconstruct the path to the target vertex
+by keeping track of the vertex that was visited preceeding the current vertex.
 
 ################################ ASSUMPTION ################################
-# The main assumptions of Dijkstra's algorithm is that the graphs
-# have non-negative edge weights.
+The main assumptions of Dijkstra's algorithm is that the graphs
+have non-negative edge weights.
 
-# Use of min priority queue or min heap to find the next nearest vertex
-# Known as a greedy algorithm
+Use of min priority queue or min heap to find the next nearest vertex
+Known as a greedy algorithm
 ################################# Time complexity ################################
-# T = O(ElogV)
-
-
+T = O(ElogV)
+"""
 import sys
 
 # Providing the graph

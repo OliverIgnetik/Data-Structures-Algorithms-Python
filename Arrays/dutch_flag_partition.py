@@ -2,7 +2,7 @@
 
 """
 Made famous by Dijkstra
-Organizes the array into elements:
+Organizes the array into:
 
 - elements less then the pivot 
 - elements equal to the pivot 
@@ -37,6 +37,7 @@ def dutch_flag_partition_1(pivot_index, A):
 def dutch_flag_partition_2(pivot_index, A):
     pivot = A[pivot_index]
     # use the smaller index to throw elements that are less then the pivot back
+    # to the correct place in the array
     smaller = 0
     for i in range(len(A)):
         if A[i] < pivot:

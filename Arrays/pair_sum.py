@@ -1,5 +1,12 @@
 from nose.tools import assert_equal
 
+"""
+Classic problem trading time for space complexity
+using a set.
+Space : O(N)
+Time : O(N)
+"""
+
 
 def pair_sum(arr, k):
 
@@ -13,7 +20,7 @@ def pair_sum(arr, k):
     output = set()
 
     for num in arr:  # O(N)
-        complement = k-num
+        complement = k - num
         # you only need to keep track of one number - the difference
         # ensures unique pairs
         if num not in seen:

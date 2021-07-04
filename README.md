@@ -8,10 +8,13 @@ This repository is a collection of algorithms and data structures python.Include
 
 1. Arrays
    - Kadane's algorithm
+   - Dutch Flag Partition
 2. Graphs
    - Directed and Undirected graphs
+   - Fundamental traversals
 3. Hashtables (dictionary)
    - Rubin-Karp algorithm
+   - Implementations with linear probing for hash collisions
 4. Linked Lists
    - Doubly linked list
 5. Stack and Queues

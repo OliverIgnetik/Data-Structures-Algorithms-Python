@@ -6,8 +6,12 @@ def uni_char(s):
     return len(set(s)) == len(s)
 
 
-# set answer O(N) time complexity
-# O(K) space complexity where K is the number of items in the set
+"""
+O(N) time complexity
+O(K) space complexity 
+Where K is the number of items in the set
+"""
+
 
 def uni_char2(s):
     chars = set()

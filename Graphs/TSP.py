@@ -1,10 +1,12 @@
-# Python3 program to implement traveling salesman
-# problem using naive approach.
+""" 
+Implementation of traveling salesman problem
 
-# REFERENCES
-# https://www.geeksforgeeks.org/traveling-salesman-problem-tsp-implementation/ GeeksforGeeks solution
-# https://www.youtube.com/watch?v=cY4HiiFHO1o WilliamFiset
-# https://www.youtube.com/watch?v=M5UggIrAOME JoeJames
+REFERENCES
+- https://www.geeksforgeeks.org/traveling-salesman-problem-tsp-implementation/ GeeksforGeeks solution
+- https://www.youtube.com/watch?v=cY4HiiFHO1o WilliamFiset
+- https://www.youtube.com/watch?v=M5UggIrAOME JoeJames
+
+"""
 
 from sys import maxsize
 from itertools import permutations

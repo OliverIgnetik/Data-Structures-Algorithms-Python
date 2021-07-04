@@ -1,6 +1,13 @@
-##################### RESOURCES #####################
-# https://www.youtube.com/watch?v=PMMc4VsIacU Reducible
-# https://www.youtube.com/watch?v=TIbUeeksXcI&t=535s Back To Back SWE
+"""
+Basic DFS implementation 
+
+Recursive and stack based approaches
+
+References 
+- https://www.youtube.com/watch?v=PMMc4VsIacU Reducible
+- https://www.youtube.com/watch?v=TIbUeeksXcI&t=535s BackToBackSWE
+"""
+
 
 def dfs(graph, start):
     visited, stack = set(), [start]
