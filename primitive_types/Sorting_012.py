@@ -19,7 +19,15 @@ class Solution:
         return arr
 
     def three_pointer_approach(self, arr: List[int]) -> List[int]:
+        """
+        Complexity 
+        Time : O(N) Single pass sorting
+        Space : O(1)
+        """
         i, l, r = 0, 0, len(arr) - 1
+        # everything to the right of r is 2
+        # everything in between is 1
+        # everything to the left of l is 0
 
         while i < len(arr):
             if arr[i] == 2 and i < r:
@@ -30,6 +38,7 @@ class Solution:
             elif arr[i] == 0 and i > l:
                 # move element to the beginning of the array
                 arr[i], arr[l] = arr[l], arr[i]
+                # l got what it wanted so increment
                 l += 1
             else:
                 # this is the pivot so don't touch it
