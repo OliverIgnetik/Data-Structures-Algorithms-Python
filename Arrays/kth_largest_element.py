@@ -1,4 +1,12 @@
 from queue import PriorityQueue
+"""
+MASTER THEOREM for Recurrence Relations
+T(n) = aT(n/b) + cn^k 
+
+T(n) is O(n^k) if a < b^k
+T(n) is O(n^klog_b(n)) if a = b^k
+T(n) is O(n^(log_b(a))) if a < b^k
+"""
 
 """
 Sorting method will most likely be quick sort or merge sort 
@@ -35,6 +43,16 @@ def heap_approach(arr, k):
 O(N) Approach using partitions 
 Think of BUD (Bottlenecks, Unnecessary work, Duplicate work)
 
+Recurrence relation 
+
+T(n) = T(n/2) + O(n)
+
+Using the master theorem 
+a = 1, b = 2, c = 1, k = 1
+b^k = 2 > a
+
+T(n) is O(n)
+
 We can do a partition and eliminate half of the search space (on average).
 It works given the fact that in a sorted array:
 - The kth largest item must be at index (n-k)
@@ -48,7 +66,7 @@ import math
 import random
 
 
-def kthLargest(arr, k):
+def quickselect(arr, k):
     '''
     :type arr: list of int
     :type k: int
@@ -116,4 +134,4 @@ def kthLargest(arr, k):
 arr = [8, 1, 3, 2, 6, 7]
 
 print(heap_approach(arr, 2))
-print(kthLargest(arr, 2))
+print(quickselect(arr, 2))

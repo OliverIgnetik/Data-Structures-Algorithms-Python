@@ -98,7 +98,7 @@ class Trie:
                 currentNode = currentNode.children[currentWord[0]]
                 currentWord = currentWord[1:]
             # if we can't find the current letter in this node's children
-            # the word is not in the tre
+            # the word is not in the trie
             else:
                 return "Not in trie"
         # if we have run out of letters and the current node has no value
@@ -109,8 +109,8 @@ class Trie:
         return currentNode.value
 
     def printAllNodes(self):
-        # Depth First Search Traversal of the trie
-        # ie. we are making use of a stack
+        # Breadth First Search Traversal of the trie
+        # ie. we are making use of a queue
         nodes = [self.root]
         while len(nodes) > 0:
             for letter in nodes[0].children:
@@ -128,5 +128,5 @@ def makeTrie(words):
 if __name__ == "__main__":
     trie = makeTrie({'hello': 5, 'hat': 7, 'her': 1})
     trie.lookup('nope')
-    trie.lookup('hello')
+    print(trie.lookup('hello'))
     trie.printAllNodes()

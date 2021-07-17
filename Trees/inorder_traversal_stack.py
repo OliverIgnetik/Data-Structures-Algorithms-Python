@@ -1,4 +1,4 @@
-# Python program to do inorder traversal without recursion
+# Inorder traversal without recursion
 
 # A binary tree node
 class Node:
@@ -35,7 +35,7 @@ def inOrder(root):
         # empty you are done
         elif(stack):
             current = stack.pop()
-            print(current.data, end=" ")  # Python 3 printing
+            print(current.data, end=" ")
 
             # We have visited the node and its left
             # subtree. Now, it's right subtree's turn
@@ -46,15 +46,16 @@ def inOrder(root):
 
     print()
 
+
 # Driver program to test above function
-
-
-""" Constructed binary tree is
-			1
-		/ \
-		2	 3
-	/ \
-	4 5 """
+""" 
+Constructed binary tree is
+		1
+	   / \
+      2	  3
+     / \
+    4   5 
+"""
 
 root = Node(1)
 root.left = Node(2)
@@ -63,5 +64,3 @@ root.left.left = Node(4)
 root.left.right = Node(5)
 
 inOrder(root)
-
-# This code is contributed by Nikhil Kumar Singh(nickzuck_007)

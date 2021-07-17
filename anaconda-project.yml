@@ -218,6 +218,7 @@ downloads: {}
 packages:
 - python
 - autopep8
+- nose
 
 #
 # In the channels section, list any Conda channel URLs to be searched

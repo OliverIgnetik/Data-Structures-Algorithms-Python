@@ -32,8 +32,11 @@ def dutch_flag_partition_1(pivot_index, A):
                 A[i], A[j] = A[j], A[i]
                 break
 
+    return A
 
 # Time : O(N), Space : O(1)
+
+
 def dutch_flag_partition_2(pivot_index, A):
     pivot = A[pivot_index]
     # use the smaller index to throw elements that are less then the pivot back
@@ -55,8 +58,11 @@ def dutch_flag_partition_2(pivot_index, A):
             A[i], A[larger] = A[larger], A[i]
             larger -= 1
 
+    return A
 
 # Time : O(N), Space : O(1)
+
+
 def dutch_flag_partition_3(pivot_index, A):
     pivot = A[pivot_index]
     smaller, equal, larger = 0, 0, len(A)
@@ -71,7 +77,9 @@ def dutch_flag_partition_3(pivot_index, A):
             larger -= 1
             A[equal], A[larger] = A[larger], A[equal]
 
+    return A
+
 
 arr = [2, 3, 6, 17, 9, 10, 1, 5]
 
-print(dutch_flag_partition_2(4, arr))
+print(dutch_flag_partition_3(4, arr))

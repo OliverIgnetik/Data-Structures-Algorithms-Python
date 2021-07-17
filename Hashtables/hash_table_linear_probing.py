@@ -44,7 +44,7 @@ class HashTable(object):
 
     def rehash(self, oldhash, size):
         # For finding next possible positions
-        return (oldhash+1) % size
+        return (oldhash + 1) % size
 
     def get(self, key):
 
