@@ -2,7 +2,6 @@ import sys
 sys.path.append('..\\..\\Trees\\heaps')
 
 from math import inf
-from typing import NamedTuple
 from dary_heap import minIndexedDHeap
 from directed_graph import AdjacencyListGraph
 
@@ -13,8 +12,8 @@ Resources
 
 ############### Optimal D-ary Heap ###############
 A D-ary heap is a heap variant in which each node has D children.
-The state of the art methods use D-ary heaps which reduce the cost of
-decreaseKey operations by increasing the cost of removal operations
+The state of the art Dijkstra's algorithms implementations use D-ary heaps 
+which reduce the cost of decreaseKey operations by increasing the cost of removal operations
 compared to an Indexed Priority Queue. Removal operations are much less common in dense graphs.
 
 The best degree, D, to use is D = E/V to balance removals against decreaseKey operations
@@ -43,7 +42,7 @@ def dijkstra_dary_heap(g, n, s):
     dist = [inf] * n
     dist[s] = 0
     prev = [None] * n
-
+    # set the degree to the optimum number
     degree = g.num_edges / g.num_vertices
     ipq = minIndexedDHeap(degree, n)
     ipq.insert(s, 0)

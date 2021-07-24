@@ -3,9 +3,61 @@ from itertools import combinations
 from functools import reduce
 """
 DIFFERENCE BETWEEN PERMUTATIONS AND COMBINATIONS
-permutations('ABCD', 2) AB AC AD BA BC BD CA CB CD DA DB DC NOTE: ORDER MATTERS AD !=
+permutations('ABCD', 2) AB AC AD BA BC BD CA CB CD DA DB DC NOTE: ORDER MATTERS AD != DA
 combinations('ABCD', 2) AB AC AD BC BD CD NOTE: ORDER DOES NOT MATTER AD = DA
+
+NOTE: N Choose R 
+Combinations = N!/(R!(N - R)!) ORDER DOES NOT MATTER
+Permutations = N!/(N-R)! ORDER MATTERS 
 """
+
+
+class Solution:
+    def two_sum(self, target, i, arr):
+        """
+        Runs in linear time 
+        Scan from (i+1)th index to end of the array
+        """
+        seen = set()
+        output = set()
+
+        for j in range(i + 1, len(arr)):
+            num = arr[j]
+            complement = target - num
+            # If we haven't seen the complement off this num add the complement to seen
+            if num not in seen:
+                seen.add(complement)
+            else:
+                # We have seen the complement of this number before so add the pair
+                # so we have the numbers ordered properly
+                output.add((min(num, complement), max(num, complement)))
+        return output
+
+    def three_sum_alternative(self, arr: List[int]) -> List[int]:
+        """
+        This approach is more optimal because we prevent recomputation
+
+        NOTE: Remember lists are not hashable but tuples are 
+
+        Complexity
+        Time : O(N^2)
+        Space : O(|N|) We have a seen set
+        """
+        # we can assume that this takes O(Nk) ie. radix sort
+        arr.sort()
+        triplets = {}
+        for root_index in range(len(arr) - 1):
+            root_element = arr[root_index]
+            # we want to find a two sum that sums to the -ve value of the current root element
+            pairs = self.two_sum(-root_element, root_index, arr)
+            # now we have to go through the pairs we have found and make sure we don't add duplicates
+            for pair in pairs:
+                triplet = (root_element,)
+                triplet += pair
+                # tuplets are hashable lists are not
+                if triplet not in triplets:
+                    triplets[triplet] = list(triplet)
+        return list(triplets.values())
 
 
 class SolutionPointers:
@@ -65,7 +117,7 @@ class SolutionPointers:
                 right -= 1  # if sum > 0 only decrease right index to get lesser sum
 
 
-class SolutionHashTable:
+class IterToolsSolution:
     def three_sum_itertools_approach(self, arr: List[int]) -> List[List[int]]:
         """
         Given an array of integers return all the unique triplets that sum to 0
@@ -80,7 +132,7 @@ class SolutionHashTable:
         NOTE: Duplicate triplets are not allowed in the output
 
         Complexity
-        Time : O(N Choose R)
+        Time : O(N Choose R) 
         Space : O(N Choose R) 
         """
         res = {}
@@ -91,47 +143,6 @@ class SolutionHashTable:
                 res[sorted_triplet] = list(sorted_triplet)
 
         return res.values()
-
-    def two_sum(self, target, i, arr):
-        """
-        Runs in linear time 
-        Scan from (i+1)th index to end of the array
-        """
-        seen = set()
-        output = set()
-
-        for j in range(i + 1, len(arr)):
-            num = arr[j]
-            complement = target - num
-            if num not in seen:
-                seen.add(complement)
-            else:
-                # so we have the numbers ordered properly
-                output.add((min(num, complement), max(num, complement)))
-        return output
-
-    def three_sum_alternative(self, arr: List[int]) -> List[int]:
-        """
-        This approach is more optimal because we prevent recomputation
-
-        NOTE: Remember lists are not hashable but tuples are 
-
-        Complexity
-        Time : O(N^2)
-        Space : O(|N|) We have a seen set
-        """
-        # we can assume that this takes O(Nk) ie. radix sort
-        arr.sort()
-        triplets = {}
-        for root_index in range(len(arr) - 1):
-            root_element = arr[root_index]
-            pairs = self.two_sum(-root_element, root_index, arr)
-            for pair in pairs:
-                triplet = (root_element,)
-                triplet += pair
-                if triplet not in triplets:
-                    triplets[triplet] = list(triplet)
-        return list(triplets.values())
 
 
 print(SolutionPointers().three_sum(

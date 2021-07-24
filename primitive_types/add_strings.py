@@ -20,8 +20,10 @@ def addStrings(s1, s2):
         num1 = int(s1[i]) if i >= 0 else 0
         num2 = int(s2[j]) if j >= 0 else 0
         sum_ = num1 + num2 + overflow
-        digit = sum_ % 10
-        overflow = sum_ // 10
+        if sum_ == 2:
+            digit, overflow = 0, 1
+        else:
+            digit, overflow = 1, 0
         return digit, overflow
 
     res = ''

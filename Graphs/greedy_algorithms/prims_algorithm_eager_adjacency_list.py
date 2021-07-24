@@ -85,6 +85,7 @@ def eager_prim(g, n, s=0):
     return (mstCost, mstEdges)
 
 
+# construct an undirected graph
 g = make_complicated_graph2()
 
 cost, edges = eager_prim(g, len(g), 0)

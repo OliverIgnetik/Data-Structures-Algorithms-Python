@@ -4,11 +4,12 @@
 Bellman Ford algorithm helps us find the shortest path from a vertex
 to all other vertices of a weighted graph. It is similar to Dijkstra's
 algorithm but it can work with graphs in which edges can have negative weights.
+NOTE: This algorithm can also detect NEGATIVE CYCLES
 
 ################################# Time Complexity ################################
-Best Case Complexity	O(E)
-Average Case Complexity	O(VE)
-Worst Case Complexity	O(VE)
+Best Case Complexity	O(EV)
+Average Case Complexity	O(EV)
+Worst Case Complexity	O(EV)
 
 ################################# Space Complexity ################################
 And, the space complexity is O(V)

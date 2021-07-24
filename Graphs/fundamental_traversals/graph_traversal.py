@@ -6,6 +6,21 @@ BFS and DFS explanation
 
 REFERENCE FOR CODE
 - https://www.youtube.com/watch?v=-uR7BSfNJko&t=421s
+
+Graph Fundamentals
+In degree 
+The number of incident edges that point to the vertex 
+
+Out degree 
+The number of incident edges that leave the vertex
+
+Connectivity
+In a digraph it is not always possible for a pair of nodes 
+to be reachable from one another
+Connectiveness - Only one node is reachable from the other
+Strongly connected - Both nodes are reachable from one another
+
+Strongly connected component - maximal subgraph that is strongly connected (ie. every node is reachable from every other node)
 """
 
 

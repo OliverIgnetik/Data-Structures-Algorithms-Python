@@ -23,6 +23,9 @@ class GraphEdge:
 
 
 class AdjacencyListGraph:
+    """
+    Adjacency List Digraph
+    """
 
     def __init__(self):
         self.vertices = {}
@@ -39,7 +42,7 @@ class AdjacencyListGraph:
         return self.vertices[key]
 
     def add_vertex(self, key):
-        if key not in self.vertices:
+        if key in self.vertices:
             raise KeyError('Vertex already exists in the graph')
         else:
             self.vertices[key] = list()
@@ -57,6 +60,8 @@ class AdjacencyListGraph:
         self.vertices[f].append(ne)
         self.num_edges += 1
         return
+
+# undirected graph example
 
 
 def make_complicated_graph1():
@@ -99,6 +104,8 @@ def make_complicated_graph1():
     g.add_edge(5, 2, 8)
 
     return g
+
+# undirected graph example
 
 
 def make_complicated_graph2():

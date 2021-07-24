@@ -1,8 +1,11 @@
+from collections import deque
+
+
 def bfs(graph, start):
-    visited, queue = set(), [start]
+    visited, queue = set(), deque([start])
     while queue:
         # use of a queue in contrast to dfs which uses a stack
-        vertex = queue.pop(0)
+        vertex = queue.popleft()
         if vertex not in visited:
             print(vertex)
             visited.add(vertex)
@@ -11,13 +14,16 @@ def bfs(graph, start):
 
 
 def bfs_paths(graph, start, goal):
-    queue = [(start, [start])]
+    queue = deque()
+    queue.append((start, [start]))
     while queue:
-        (vertex, path) = queue.pop(0)
+        (vertex, path) = queue.popleft()
         # Go through the neighbours you haven't visited
         for nv in graph[vertex] - set(path):
             if nv == goal:
                 # yield is used in conjuction with the next keyword
+                # NOTE: you can also call list on the iterator object that
+                # is the result of this function call
                 yield path + [nv]
             else:
                 queue.append((nv, path + [nv]))

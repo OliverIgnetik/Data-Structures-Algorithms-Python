@@ -8,7 +8,6 @@ sys.path.append('..\\..\\Stacks and Queues')
 
 from queue import PriorityQueue
 from math import inf
-from typing import NamedTuple
 from indexed_priority_queue_pydict import minpq
 from directed_graph import AdjacencyListGraph
 
@@ -65,7 +64,7 @@ def lazy_dijkstra_short_path_value(g, n, s, e):
         if dist[index] < minValue:
             continue
         for edge in g[index]:
-            # if we have visited that vertex then don't relax the edges
+            # if we have visited that vertex then don't relax the edge
             if vis[edge.to]:
                 continue
             newDist = dist[index] + edge.cost
@@ -83,8 +82,8 @@ def lazy_dijkstra_short_path_value(g, n, s, e):
 
 def lazy_dijkstra(g, n, s):
     """
-    Given a weighted directed graph g and a start node s return the distance to each node. 
-    And the previous node visited before reaching the queried node on the optimal path.
+    Given a weighted directed graph g and a start node s return the distance to each node
+    and the previous node visited before reaching the queried node on the optimal path.
     """
     vis = [0] * n
     prev = [None] * n
@@ -102,7 +101,7 @@ def lazy_dijkstra(g, n, s):
         if dist[index] < minValue:
             continue
         for edge in g[index]:
-            # if we have visited that vertex then don't relax the edges
+            # if we have visited that vertex then don't relax the edge
             if vis[edge.to]:
                 continue
             newDist = dist[index] + edge.cost
@@ -125,6 +124,7 @@ def find_shortest_path(g, n, s, e):
     # loop backwards from the end vertex
     path.append(e)
     i = e
+    # prev[i] == None corresponds to the start node
     while prev[i] != None:
         path.append(prev[i])
         i = prev[i]
@@ -151,7 +151,7 @@ decreaseKey operations by increasing the cost of removal operations.
 Removal operations are much less common in dense graphs.
 
 The best degree, D, to use is D = E/V which balances the cost of removal against
-decreaseKey operations, improving the time complexity to :
+decreaseKey operations, improving the time complexity to:
 T = O(E*log_{E/V}(V))
 
 ############### Fibonacci Heap ###################
@@ -172,6 +172,8 @@ def eager_dijkstra(g, n, s):
     prev = [None] * n
     dist[s] = 0
     ipq = minpq()
+    # API expects two inputs
+    # key and value
     ipq.additem(s, 0)
 
     while len(ipq) != 0:

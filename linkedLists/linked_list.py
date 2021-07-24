@@ -1,5 +1,17 @@
 # 15 --> 6 --> 8
 
+"""
+TIME COMPLEXITY
+----
+insertAtIndex : O(1)
+removeAtIndex : O(1)
+search : O(N)
+access : O(N) (to access the element at index j we have to traverse the linked list)
+
+SPACE COMPLEXITY : O(N)
+"""
+
+
 class Node():
 
     def __init__(self, data):
@@ -32,15 +44,15 @@ class LinkedList():
 
     def insert(self, index, data):
         new_node = Node(data)
-        i = 0
         temp = self.head
         if index >= self.length:
             raise IndexError('Index out of range')
         if index == 0:
             self.prepend(data)
             return
+        i = 0
         while i < self.length:
-            if i == index-1:
+            if i == index - 1:
                 temp.next, new_node.next = new_node, temp.next
                 self.length += 1
                 return
@@ -67,14 +79,14 @@ class LinkedList():
 
         while i < self.length:
             # removing the tail
-            if i == index - 1 and index == self.length-1:
+            if i == index - 1 and index == self.length - 1:
                 temp.next = None
                 self.tail = temp
                 self.length -= 1
                 return
 
             # otherwise
-            elif i == index-1:
+            elif i == index - 1:
                 temp.next = temp.next.next
                 self.length -= 1
                 return
@@ -87,7 +99,7 @@ class LinkedList():
             print(temp.data, end=' ')
             temp = temp.next
         print()
-        print('Length = '+str(self.length))
+        print('Length = ' + str(self.length))
 
     def reverse(self):
         prev = None
@@ -100,14 +112,15 @@ class LinkedList():
         self.head, self.tail = self.tail, self.head
 
 
-l = LinkedList()
-l.append(10)
-l.append(5)
-l.append(6)
-l.prepend(1)
-l.insert(2, 99)
-l.insert(4, 23)
-l.remove(5)
-l.reverse()
-l.printl()
-print(l.head.data, l.tail.data)
+if __name__ == '__main__':
+    l = LinkedList()
+    l.append(10)
+    l.append(5)
+    l.append(6)
+    l.prepend(1)
+    l.insert(2, 99)
+    l.insert(4, 23)
+    l.remove(5)
+    l.reverse()
+    l.printl()
+    print(l.head.data, l.tail.data)

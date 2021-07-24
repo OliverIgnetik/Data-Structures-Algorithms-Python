@@ -52,12 +52,12 @@ class DoublyLinkedList:
             self.length -= 1
             return
         # this illustrates why having a doubly linked list is preferrable
-        if index == self.length-1:
+        if index == self.length - 1:
             self.tail = self.tail.prev
             self.tail.next = None
             self.length -= 1
             return
-        leader = self.traversetoindex(index-1)
+        leader = self.traversetoindex(index - 1)
         unwanted_node = leader.next
         holder = unwanted_node.next
         leader.next = holder
@@ -80,6 +80,16 @@ class DoublyLinkedList:
         print()
         print('Length ' + str(self.length))
 
+    def reverse(self):
+        temp, prev = self.head, None
+        while temp:
+            next_ = temp.next
+            temp.next = prev
+            temp.prev = next_
+            prev = temp
+            temp = next_
+        self.head, self.tail = self.tail, self.head
+
 
 d = DoublyLinkedList()
 d.append(10)
@@ -88,4 +98,6 @@ d.append(6)
 d.prepend(1)
 d.insert(2, 22)
 d.remove(3)
+d.printt()
+d.reverse()
 d.printt()
