@@ -2,7 +2,10 @@
 Count Valid Expressions
 You are given an array of integers nums and an integer target.
 
-Your goal is to build a valid expression out of nums by adding one of the symbols + and  - before each integer in nums. The value of this expression should be equal to target.
+Your goal is to build a valid expression out of nums by adding one of the symbols + and  - before each integer in nums. 
+The value of this expression should be equal to target.
+NOTE: you are not allow to rearrange the nums, 
+all we can do is place the operators
 
 For Example :
 If nums = [3,5] you can form -
@@ -43,20 +46,22 @@ class Solution:
 
         Approach 
         ----
-        1. The problem statement clearly states that either an element can treated as positive or negative. 
-        2. Let 'P' be the sum of elements that need to be positive and 'N' be the sum of elements that need to be 
-          negative => P-N = target 
-                   => P+N+P-N = target+P+N (Adding P+N both sides in the equation)
+        1. The problem statement clearly states that either an element can treated as positive or negative.
+
+        2. Let 'P' be the sum of elements that need to be positive and 'N' be the sum of elements that need to be negative
+                   => P-N = target 
+                   => P + N + P - N = target + P + N (Adding P+N both sides in the equation)
                    => 2*P = target + sum of array 
-                   => P = (target+sum of array)/2
-        3. So our problem is simplified to subset sum problem  
+                   => P = (target + sum of array)/2
+
+        3. So our problem is simplified to a subset sum problem  
 
         Complexity
         ----
         t = target number
         n = nums we can use
         Time : O(t*n)
-        Space : O(N)
+        Space : O(n)
         """
 
         num_sum = 0
@@ -73,10 +78,15 @@ class Solution:
         # assign (sum+target)/2 to new variable
         target_sum = (num_sum + target) // 2
 
-        # Create a DP array of size target_sum+1 for storing values
+        # Create a DP array of size target_sum + 1 for storing values
+        # NOTE: we need to include 0 as the base case
         dp = [1] + [0] * target_sum
 
-        # Fill the DP vector in a bottom up manner
+        # Fill the DP subproblem table in a bottom up manner
+        # Subproblem definition
+
+        # NOTE: we consider unique valid expressions were we can only use
+        # each of the numbers once
         for num in nums:
             for s in range(target_sum, num - 1, -1):
                 dp[s] += dp[s - num]

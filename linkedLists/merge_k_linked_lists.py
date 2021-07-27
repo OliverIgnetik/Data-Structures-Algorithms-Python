@@ -1,4 +1,5 @@
 from queue import PriorityQueue
+from typing import List
 """
 NOTE: PriorityQueue will sort on the first item in the tuple
 Best Practice
@@ -32,7 +33,7 @@ N final nodes in the last linked list
 """
 
 
-def mergeKLists(lists: list[ListNode]) -> ListNode:
+def mergeKLists(lists: List[ListNode]) -> ListNode:
 
     def get_min_node(lists):
         min_node = ListNode(val=float('inf'))

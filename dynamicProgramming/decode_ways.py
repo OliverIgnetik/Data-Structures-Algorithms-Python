@@ -64,8 +64,8 @@ class Solution:
         T(N) = T(N-1) + T(N-2) + O(1)
         NOTE: the helper function has constant time
 
-        Time : O(2^N) ie. the deepest part of the tree will be N function calls deep
-        with memoization O(N) because we cache answers and only solve subproblems once
+        Time : O(2^N) ie. the deepest part of the tree will be N function calls deep.
+        With memoization the time complexity becomes O(N) because we cache answers and only solve subproblems once
         Space : O(N) because we keep a table with N subproblems
         """
         dp = [-1] * len(s)
@@ -81,12 +81,14 @@ class Solution:
         if dp[decode_pointer] > -1:
             return dp[decode_pointer]
 
+        # exists in this stack frame
         total_decompositions = 0
 
         # For substrings of length 1 and 2
         # NOTE: we can only have encodings with two numbers as we have a-z <-> 1-26
         for i in range(1, 3):
             # we have to make sure we don't go past the end of the string
+            # NOTE: this ensures our snippet only includes what's in the string
             if decode_pointer + i <= len(s):
                 # Grab the substring of length 1 and 2 if they exist starting from decodePointer
                 snippet = s[decode_pointer:decode_pointer + i]

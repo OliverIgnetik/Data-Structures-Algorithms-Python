@@ -1,6 +1,7 @@
 """
 The Change Making Problem
-Given an array of integers that represent coins called coins and an integer amount amount, return the minimum amount of coins it requires to make complete change for amount amount.
+Given an array of integers that represent coins called coins and an integer amount amount,
+return the minimum amount of coins it requires to make complete change for amount amount.
 
 If it is not possible to make change return -1.
 
@@ -96,8 +97,7 @@ class TopDownSolution:
         if cache[remainder] != 0:
             return cache[remainder]
 
-        # No answer yet. Try each coin as the last coin in the change that
-        # we make for the amount
+        # No answer yet. Try each coin as the last coin in the change that we make for the amount
         system_max = sys.maxsize
         minimum = system_max
         for coin in coins:

@@ -1,5 +1,5 @@
 import sys
-sys.path.append('..\\..\\Trees\\heaps')
+sys.path.append('..\\..\\heaps')
 
 from math import inf
 from dary_heap import minIndexedDHeap

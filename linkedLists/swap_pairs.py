@@ -29,38 +29,53 @@ class Node:
 
 
 class Solution:
-    def swap_pair(self, n1, n2):
-        n2_next = n2.next
-        n2.next = n1
-        n1.next = n2_next
-        return n2
-
-    def swap_pairs(self, head):
+    def swapInPairs(self, head):
         """
+        Interface
+        ----
+        :type head: ListNode
+        :rtype: ListNode
+
         Complexity
         ----
         Time : O(N)
         Space : O(1)
         """
-        # # swap the first two nodes
-        # if head.next:
-        #     new_head = self.swap_pair(head, head.next)
-        # else:
-        #     return head
+        if (head == None or head.next == None):
+            return head
 
-        # # get the next pair of nodes
-        # temp = new_head.next.next
-        # if temp:
-        #     temp_n = temp.next
+        first = head
+        second = head.next
+        start_of_next_segment = None
 
-        # while temp and temp_n:
-        #     next_node = temp_n.next
+        # Move the head of the list to the 2nd node in the list
+        head = head.next
 
-        # return
+        while True:
+            # get the start of the next segment
+            start_of_next_segment = second.next
+            # the second node will point to the first
+            second.next = first
+
+            # edge case
+            # we have one node or nothing after this pair
+            if (
+                start_of_next_segment == None or
+                start_of_next_segment.next == None
+            ):
+                first.next = start_of_next_segment
+                return head
+
+            # point first at second item in the next pair
+            # as it will become the first item in the next pair
+            first.next = start_of_next_segment.next
+
+            # point first at first node in the next pair
+            first = start_of_next_segment
+            # point second at the second node in the next pair
+            second = start_of_next_segment.next
 
 
 head = Node(1, Node(2, Node(3, Node(4, None))))
-n1 = head
-n2 = n1.next
 s = Solution()
-s.swap_pair(n1, n2)
+s.swapInPairs(head)

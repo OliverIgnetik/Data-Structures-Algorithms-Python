@@ -47,6 +47,7 @@ class Solution:
         The overall runtime is O(N*M), where N is the length of the original string and M is the size of our dictionary.
         If M is sufficiently larger than N, we can make a slight optimization by iterating over the possible strings in
         our dynamic programming table rather than our dictionary. 
+
         NOTE: The runtime of the modified approach would be O(N^2 + M).
         Time : O(N*M)
         Space : O(M)
@@ -59,6 +60,7 @@ class Solution:
         # We will utilize two pointers to check if substrings exist in our dictionary
         for i in range(1, len(s) + 1):
             for j in range(0, i):
+                # check if we can decompose the prefix and the suffix is in our dictionary
                 if can_decompose[j] == True and s[j:i] in dictionary:
                     # Update our array and break, since we have verified we can decompose our string up to index i
                     can_decompose[i] = True

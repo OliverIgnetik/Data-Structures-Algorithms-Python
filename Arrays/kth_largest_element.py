@@ -29,7 +29,7 @@ left in the heap is the kth largest item.
 """
 
 
-def heap_approach(arr, k):
+def heap_approach_kth_largest(arr, k):
     q = PriorityQueue()
     for num in arr:
         q.put(num)
@@ -37,6 +37,16 @@ def heap_approach(arr, k):
             q.get()
 
     return q.get()
+
+
+def heap_approach_kth_smallest(arr, k):
+    q = PriorityQueue()
+    for num in arr:
+        q.put(-num)
+        if q.qsize() > k:
+            q.get()
+
+    return -q.get()
 
 
 """
@@ -68,6 +78,8 @@ import random
 
 def quickselect(arr, k):
     '''
+    Interface
+    ----
     :type arr: list of int
     :type k: int
     :rtype: int
@@ -133,5 +145,5 @@ def quickselect(arr, k):
 
 arr = [8, 1, 3, 2, 6, 7]
 
-print(heap_approach(arr, 2))
+print(heap_approach_kth_smallest(arr, 2))
 print(quickselect(arr, 2))

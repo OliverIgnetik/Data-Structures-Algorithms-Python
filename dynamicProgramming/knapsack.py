@@ -95,9 +95,11 @@ class TopDownNoMemoizationSolution:
             b.) Determine subproblem answer with total items considered reduced (this item no longer considered)
         """
         # with_item
+        # NOTE: move onto the next item
         with_item = values[current_item_index] + self.knapsack_helper(
             values, weights, max_weight_constraint - weights[current_item_index], total_items - 1)
         # without_item
+        # NOTE: we don't subtract it's weight or it's value
         without_item = self.knapsack_helper(
             values, weights, max_weight_constraint, total_items - 1)
 
