@@ -3,7 +3,7 @@ Longest Non-Decreasing Subsequence
 Given an array on integers return the length of the longest non-decreasing subsequence.
 
 A "subsequence" of a sequence is a subset of the sequence's elements where the original ordering of the elements is maintained. 
-NOTE: A subsequence does not have to be contiguous but can be.
+NOTE: A subsequence does not have to be contiguous but it can be.
 
 A "non-decreasing subsequence" is a subsequence whose values either stay the same or increase as the sequence progresses in natural order (does not decrease).
 
@@ -76,7 +76,7 @@ class Solution:
         return maximum_so_far
 
 
-# NOTE: remember the longest non decreasing subsequence does not have to contiguous
+# NOTE: remember the longest non decreasing subsequence does not have to be contiguous
 arr = [1, 2, 3, 4, 5, 6]
 s = Solution()
 res = s.lengthOfLNDS(arr)

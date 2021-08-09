@@ -66,7 +66,7 @@ class Solution:
 
         2. Build the subproblem table
 
-        3. Identify the subproblem problem relations
+        3. Identify the subproblem relations
         - ie. how does each operation relate to the subproblem table?
 
         4. Identify base cases

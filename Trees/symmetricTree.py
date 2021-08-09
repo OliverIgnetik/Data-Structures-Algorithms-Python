@@ -76,7 +76,7 @@ class Solution:
                 self.check_symmetry(left_subtree_root.left,
                                     right_subtree_root.right)
             )
-        # one of the subtrees is None therefor the tree is not symmetric
+        # one of the subtrees is None therefore the tree is not symmetric
         return False
 
 

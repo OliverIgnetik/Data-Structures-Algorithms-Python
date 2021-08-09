@@ -58,11 +58,11 @@ class LinearSpaceSolution:
         # Traverse the array from day 2
         for i in range(1, len(prices)):
 
-            # Take the differnece between adjacent prices
+            # Take the difference between adjacent prices
             profit_delta = prices[i] - prices[i - 1]
 
             # If total profit at ith day is > 0 store it
-            # Otherwise store 0
+            # Otherwise store 0 ie. buy and sell on the same day
             opt[i] = max(0, opt[i - 1] + profit_delta)
 
             # Calculate global Max by comparing all the opt[i] value
@@ -110,7 +110,7 @@ class ConstantSpaceSolution:
             global_min = min(global_min, price)
 
             # Calculate the profit by subtracting the price at day i with global minimum
-            # NOTE: subproblems are hidden, because we are asking what were we able to achieve before
+            # NOTE: subproblems are hidden
             # You can see the nature of the subproblems in the linear space solution
             global_max = max(global_max, price - global_min)
 

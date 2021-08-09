@@ -83,7 +83,7 @@ class Solution:
         while len(q == 0):
             curr_node = q.popleft()
             # check if we have seen this node
-            if curr_node is not seen:
+            if curr_node not in seen:
                 seen.add(curr_node)
                 # case of first node
                 if groups[curr_node] == -1:

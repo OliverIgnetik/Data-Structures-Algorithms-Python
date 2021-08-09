@@ -75,6 +75,43 @@ class BinarySearchTree:
                 queue.put([curr_node.right, curr_node])
         return parents
 
+    def k_neighbors_alt(self, starting_node_value, k):
+        parents = self.set_parents()
+        start_node = self.lookup(starting_node_value)
+        if k == 0:
+            return start_node.value
+
+        # queue for BFS traversal
+        queue = Queue()
+        # seen to keep track of nodes we have processed
+        seen = set()
+        res = []
+        queue.put((start_node, 0))
+
+        while not queue.empty() != 0:
+            # process each node
+            curr_node, level = queue.get()
+            # keep track of what we have seen?
+            seen.add(curr_node.data)
+            if level == k:
+                res.append(curr_node.data)
+                continue
+            if curr_node.left:
+                if curr_node.left.data not in seen:
+                    queue.put((curr_node.left, level + 1))
+
+            if curr_node.right:
+                if curr_node.right.data not in seen:
+                    queue.put((curr_node.right, level + 1))
+
+            # does this node have a parent?
+            if parents.get(curr_node.data):
+                parent_node = parents.get(curr_node.data)
+                if parent_node.data not in seen:
+                    queue.put((parent_node, level + 1))
+
+        return res
+
     def k_neighbors(self, starting_node_value, k):
         """
         Returns all nodes k distance away in a binary tree
@@ -82,7 +119,7 @@ class BinarySearchTree:
         BFS type problem
         Typical BFS type traversal
         Time : O(M + N)
-        NOTE: M = # edges = N - 1, N = # of nodes 
+        NOTE: M = # edges = N - 1, N = # of nodes
 
         We need a hashtable to store parents for N nodes
         Space : O(N)
@@ -145,4 +182,4 @@ bst.insert(8)
 bst.insert(5)
 bst.insert(1)
 
-print(bst.k_neighbors(10, 2))
+print(bst.k_neighbors_alt(5, 2))

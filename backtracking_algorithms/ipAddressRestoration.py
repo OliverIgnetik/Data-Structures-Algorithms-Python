@@ -41,17 +41,19 @@ class Solution:
         ----
         1. Choice : (DECISION SPACE AND LOGIC)
         - choosing four segments (1-3 snippets long) -> four recursive frames 
+
         2. Constraints : (FILTER OUR CHOICE)
         - 0-255 -> the number has to be between 0 and 255
         - we can't have leading zeros
         NOTE: we can't have an address like 265.0.265.196
+
         3. Goal : (HOW DO WE CATCH THE RECURSION)
         - we know it's successful once we have traversed the whole string ie. completed four segments 
         (or our index would be equal to the length of the string)
 
         Complexity
         ----
-        Branching factor = 3 (we can make 3 decisions on the number of digits)
+        Branching factor = 3 (we can make 3 decisions on the digits in each segment)
         Base case = O(1)
         Depth = 4 (we can only go 4 segments deep in the call stack)
 
@@ -98,8 +100,8 @@ class Solution:
             segment_value = int(segment)
 
             # Check the "snapshot's" validity - if invalid break iteration
-            # NOTE: CONSTRAINT
-            if (segment_value > 255 or seg_length >= 2 and segment[0] == '0'):
+            # NOTE: CONSTRAINT, you can't have leading zeros
+            if (segment_value > 255 or (seg_length >= 2 and segment[0] == '0')):
                 break
 
             # Add the extracted segment to the working segments

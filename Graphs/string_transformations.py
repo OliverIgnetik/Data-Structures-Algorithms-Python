@@ -1,8 +1,10 @@
 """
 String Transformations
-Given a string beginWord, a string endWord, and a list of words words, return the total "transformations" it would take to turn beginWord into endWord.
+Given a string beginWord, a string endWord, and a list of words words, return the total "transformations" it would take
+to turn beginWord into endWord.
 
-A "transformation" consists of a single character change in a string. Only words in words can be used as words in the transformation "path" starting at beginWord and terminating at endWord.
+A "transformation" consists of a single character change in a string. Only words in words can be used as words in the
+transformation "path" starting at beginWord and terminating at endWord.
 
 If a transformation path cannot be found, return -1.
 
