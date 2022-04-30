@@ -11,9 +11,8 @@ References
 Overview
 
 AVL trees are BSTs that are self-balancing. 
-The reason why this is so beneficial is because BSTs
-have linear complexity when the tree becomes skewed.
-By doing this we can ensure a linear search complexity.
+The reason why this is so beneficial is because BSTs have linear complexity when the tree becomes skewed.
+By balancing the tree we can ensure a logarithmic search complexity.
 
 AVL trees use a rebalancing threshold to check the difference in heights 
 between subtrees. At a node we can have:
@@ -44,7 +43,7 @@ B(N) = H(T_L) - H(T_R)
 ------------------------------
 ROTATIONS
 
-They are focused around two critical nodes. All the other nodes moves around them
+They are focused around two critical nodes. All the other nodes moves around them.
 
 1. LEFT HEAVY
 
@@ -52,16 +51,17 @@ They are focused around two critical nodes. All the other nodes moves around the
 
 3. RIGHT HEAVY
 
-4. RIGHT HEAVY WITH CHILD THAT IS LEFT HEAVY
+4. RIGHT HEAVY WITH RIGHT CHILD THAT IS LEFT HEAVY
 
 """
+
 """
 AVL Trees & Rotations
 An AVL Tree is a self-balancing binary search tree.
 
-Given an array of integers items and a threshold threshold, return the tree resulting from 
+Given an array of integers items and a threshold, return the tree resulting from 
 performing insertions of each element items[i] while maintaining the AVL balance property 
-with threshold threshold.
+with a certain threshold.
 
 Example 1:
 Input:
@@ -126,7 +126,7 @@ All values to be inserted will be unique
 
 
 class TreeNode:
-    def __init__(self, val, left, right):
+    def __init__(self, val, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
@@ -147,7 +147,7 @@ class Solution:
         root = AVLNode(items[0])
 
         for idx in range(1, len(items)):
-            # save new the root after rotations etc.
+            # save the new root after rotations etc.
             root = self.insert(root, items[idx], threshold)
 
         # O(n) conversion for testing reasons
@@ -166,8 +166,8 @@ class Solution:
             node.right = self.insert(node.right, key, threshold)
 
         # ONCE WE BUBBLE BACK UP FROM RECURSION CHECK THE HEIGHT AGAIN
-        # When we return to this node going up in the recursion
-        # NOTE: this won't dril all the way down because we have moved back up the recursive calls we already have this information
+        # NOTE: this won't drill all the way down because we have moved back up
+        # the recursive calls and we already have this information
         node.height = 1 + max(self.get_height(node.left),
                               self.get_height(node.right))
         # find the balance factor
@@ -184,6 +184,7 @@ class Solution:
             else:
                 # left-right rotation
                 node = self.rotate_left_right(node)  # node.left is right-heavy
+
         # NOTE: right heavy -ve
         elif balance < -threshold:  # Did we create a right imbalance? < -threshold, negative
             # left rotation
@@ -218,7 +219,7 @@ class Solution:
         - Notice p and r do not change
         """
 
-        # x
+        # grab the y node
         left_temp = node.left
         # x.left = y.right
         node.left = left_temp.right
@@ -228,6 +229,7 @@ class Solution:
         # Update heights of rotated nodes based on subtree heights
         node.height = 1 + max(self.get_height(node.left),
                               self.get_height(node.right))
+
         left_temp.height = 1 + max(self.get_height(left_temp.left),
                                    self.get_height(left_temp.right))
 
@@ -254,7 +256,6 @@ class Solution:
         r   b
         """
         right_temp = node.right
-
         node.right = right_temp.left
         right_temp.left = node
 
@@ -267,7 +268,7 @@ class Solution:
         return right_temp
 
     # For left-heavy rebalance (& node.left has negative balance, right-heavy)
-    # NOTE: rotate the left child left first and then rotate node right
+    # NOTE: rotate the left child to the left first and then rotate node right
     def rotate_left_right(self, node):
         # left child is right heavy
         node.left = self.rotate_left(node.left)
@@ -275,7 +276,7 @@ class Solution:
         return self.rotate_right(node)
 
     # For right-heavy rebalance (& node.right has positive balance, left-heavy)
-    # NOTE: rotate the right child right first and then rotate node left
+    # NOTE: rotate the right child to the right first and then rotate node left
     def rotate_right_left(self, node):
         node.right = self.rotate_right(node.right)
 
@@ -307,7 +308,7 @@ class Solution:
         return root
 
     '''
-    Side-Node:
+    Side-Note:
         We can get balance this way, but it will make balance lookups O(n)
         because subtree height lookups will be O(n). Storing current height for each
         node is a must to maintain O(1) balance lookup, and subsequently O(log(n))
@@ -339,7 +340,7 @@ class AVLNode:
 s = Solution()
 root = None
 
-root = s.insertAVL(root, [1, 2, 3], 1)
+root = s.insertAVL([1, 2, 3], 1)
 print(root)
 
 """

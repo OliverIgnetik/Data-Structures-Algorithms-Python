@@ -44,7 +44,7 @@ class Solution:
 
         2. Constraints : (FILTER OUR CHOICE)
         - 0-255 -> the number has to be between 0 and 255
-        - we can't have leading zeros
+        - we can't have leading zeros (ie. 012.011.011.111)
         NOTE: we can't have an address like 265.0.265.196
 
         3. Goal : (HOW DO WE CATCH THE RECURSION)
@@ -75,7 +75,7 @@ class Solution:
         restored_ips
     ):
 
-        # If we have filled 4 segments (0, 1, 2, 3) and we are on the 4th,
+        # If we have filled 4 segments (0, 1, 2, 3)
         # we will only record an answer if the string was decomposed fully
         if (current_segment == 4 and progress_index == len(raw_ip_string)):
             restored_ips.append(
@@ -92,7 +92,7 @@ class Solution:
             if progress_index + seg_length > len(raw_ip_string):
                 break
 
-            # Calculate 1 index past where the segment ends index-wise in the original raw ip string
+            # Calculate 1 index past where the segment ends in the original raw ip string
             one_past_segment_end = progress_index + seg_length
 
             # Extract int value from our snapshot from the raw ip string

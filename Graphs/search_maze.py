@@ -21,8 +21,6 @@ class Solution:
         return neighbours
 
     def convert_id_to_coords(self, id):
-        rows = self.total_rows
-        cols = self.total_cols
         return (id - id % self.total_cols) // self.total_rows, id % self.total_cols
 
     def convert_coords_to_id(self, row, col):
@@ -79,8 +77,8 @@ class Solution:
 
         Complexity
         ----
-        Time : O(E + V)
-        Space : O(V)
+        Time : O(E + V) -> O(RowsxColumns)
+        Space : O(V) -> O(RowsxColumuns)
         """
         self.path = []
 

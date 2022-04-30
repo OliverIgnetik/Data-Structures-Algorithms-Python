@@ -90,13 +90,13 @@ class Solution:
             if (s - k) in m:
                 count += m[s - k]
             """
-            We need to keep track of how many times we have seen this each cumulative 
+            We need to keep track of how many times we have seen each cumulative 
             sum because if we have seen it more then once then there is more then one
             sub array with the target sum that we need to count
             """
             if s in m:
                 m[s] += 1
-            # if we have not seen this sum add once occurence to the map
+            # if we have not seen this sum add one occurence to the map
             else:
                 m[s] = 1
         return count

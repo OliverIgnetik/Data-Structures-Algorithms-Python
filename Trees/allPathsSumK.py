@@ -10,7 +10,7 @@ Input:  sum = 10
            5
           /
         5
-      /   \  
+      /   \
      1      0
 
 Output: 2
@@ -54,12 +54,12 @@ def printKPathUtil(root, path, k):
     This function prints all paths
     that have sum k
 
-    Approach 
+    Approach
     ----
     EASY WAY TO UNDERSTAND THIS
     1. We drill down all the way to the leaves using a preorder traversal N L R
 
-    2. Once we are at a leaf we can check the path thanks to the preorder traversal 
+    2. Once we are at a leaf we can check the path thanks to the preorder traversal
 
     3. We then pop the left leaf from the stack we can check the right leaf
 
@@ -99,18 +99,18 @@ def printKPathUtil(root, path, k):
 
 def printKPath(root, k):
     """
-    Approach 
+    Approach
     ----
     1. The basic idea to solve the problem is to do a preorder traversal of the given tree.
 
     2. We also need a container (vector) to keep track of the path that led to that node.
 
-    3. At each node we check if there are any path that sums to k, if any we print the path 
+    3. At each node we check if there are any path that sums to k, if any we print the path
     and proceed recursively to print each path. NOTE: it is key to check the property at each node
 
     Complexity
     ----
-    Time : O(n*h*h)  , as maximum size of path vector can be h 
+    Time : O(n*h*h)  , as maximum size of path vector can be h
     Space : O(h)
     """
 
@@ -122,12 +122,41 @@ def printKPath(root, k):
            5
           /
          5
-        / \  
+        / \
        1   0
 
 """
 
-head = newNode(5, newNode(5, newNode(1), newNode(0)))
+
+class AlternativeSolution:
+    def pathSum(self, root, sum):
+        prefixSumToTotalPrefixes = {}
+        prefixSumToTotalPrefixes[0] = 1
+        return self.findPathSum(root, 0, sum, prefixSumToTotalPrefixes)
+
+    def findPathSum(self, root, rootToNodeSum, target, prefixSumToTotalPrefixes):
+        if root == None:
+            return 0
+
+        rootToNodeSum += root.val
+
+        amountToCompensateFor = rootToNodeSum - target
+        totalPathsEndingAtThisNode = prefixSumToTotalPrefixes.get(
+            amountToCompensateFor, 0)
+        totalPathsWithSum = prefixSumToTotalPrefixes.get(rootToNodeSum, 0)
+        prefixSumToTotalPrefixes[rootToNodeSum] = totalPathsWithSum + 1
+
+        totalCompletedPathsInThisSubtree = totalPathsEndingAtThisNode + \
+            self.findPathSum(root.left, rootToNodeSum,
+                             target, prefixSumToTotalPrefixes) + self.findPathSum(root.right, rootToNodeSum, target, prefixSumToTotalPrefixes)
+
+        prefixSumToTotalPrefixes[
+            rootToNodeSum] = prefixSumToTotalPrefixes.get(rootToNodeSum, 0) - 1
+        return totalCompletedPathsInThisSubtree
+
+
+head = newNode(5, newNode(5, newNode(1, None, newNode(5)),
+               newNode(0, None, newNode(3, newNode(2)))), newNode(0, None, newNode(2)))
 # we expect 1
 k = 6
 printKPath(head, k)

@@ -1,19 +1,11 @@
 # approach 1 - inorder traversal vs sort
 
-tree_vals = []
-
-
 class Node:
     def __init__(self, k, val):
         self.key = k
         self.value = val
         self.left = None
         self.right = None
-
-
-tree = Node("Hello", 10)
-tree.left = Node("Five", 5)
-tree.right = Node("Thirty", 30)
 
 
 def inorder(tree):
@@ -26,6 +18,12 @@ def inorder(tree):
 def sort_check(tree_vals):
     return tree_vals == sorted(tree_vals)
 
+
+tree = Node("Hello", 10)
+tree.left = Node("Five", 5)
+tree.right = Node("Thirty", 30)
+
+tree_vals = []
 
 inorder(tree)
 print('Validation BST : ', sort_check(tree_vals))
@@ -61,6 +59,11 @@ def verify(node):
 
 # This solution is probably the easiest
 def verify_BFS(node):
+    """
+    NOTE: this approach won't catch the test case that only the recursive verify function can since
+    we are only checking the current node against it's left and right children with no reference to the
+    rest of the tree
+    """
     queue = []
     queue.append(node)
 

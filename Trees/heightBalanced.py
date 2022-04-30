@@ -1,5 +1,5 @@
 """
-est If A Binary Tree Is Height Balanced
+Test If A Binary Tree Is Height Balanced
 A binary tree is "height-balanced" if at every node the left and right subtree height do not differ by more than 1.
 
 Given a binary tree, determine if it is height-balanced.
@@ -93,7 +93,7 @@ class Solution:
             left_result.height - right_result.height) <= 1
 
         # NOTE: we have to add one to account for this node
-        # in the case where both the left and right children are leaves we get height = max(0,0) + 1
+        # In the case where both the left and right children are leaves we get height = max(0,0) + 1
         height = max(left_result.height, right_result.height) + 1
 
         # pass the information up the recursive call stack
@@ -112,8 +112,11 @@ class BalanceStatusWithHeight:
          2   3
             / \
            4   5
+          /
+         7
 """
 
-head = TreeNode(1, TreeNode(2), TreeNode(3, TreeNode(4), TreeNode(5)))
+head = TreeNode(1, TreeNode(2), TreeNode(
+    3, TreeNode(4, TreeNode(7)), TreeNode(5)))
 s = Solution()
 print(s.isBalanced(head))

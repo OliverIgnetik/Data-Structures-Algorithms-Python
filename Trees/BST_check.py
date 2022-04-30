@@ -13,7 +13,7 @@ NEG_INFINITY = float("-infinity")
 def isBST(tree, minVal=NEG_INFINITY, maxVal=INFINITY):
     if tree is None:
         return True
-    if not minVal <= tree.val <= maxVal:
+    if not minVal < tree.val < maxVal:
         return False
 
     return isBST(tree.left, minVal, tree.val) and isBST(tree.right, tree.val, maxVal)
@@ -47,4 +47,5 @@ tree.right = Node(9)
 tree.right.left = Node(7)
 tree.right.right = Node(10)
 
+print(isBST(tree))
 print(isBST2(tree))

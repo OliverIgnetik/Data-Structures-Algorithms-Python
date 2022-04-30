@@ -61,7 +61,7 @@ class Solution:
         - check the row, col and subgrid constraint to inform decision space (ie. choice of number for current state)
         - we have to pass the current col, row and board data as state
 
-        3. Backtracking : when do reach an exhausted decision space? 
+        3. Backtracking : when do we reach an exhausted decision space? 
 
         Complexity
         ----
@@ -110,7 +110,7 @@ class Solution:
                 if self.solved_from_cell(row, col + 1, board):
                     return True
 
-                # NOTE: Backtracking on our decision and try the next num
+                # NOTE: Backtracking on our decision and try the next number
                 board[row][col] = Solution.EMPTY_ENTRY
 
         # Could not fill board cell [row][col]
@@ -138,7 +138,7 @@ class Solution:
         vertical_box_index = row // region_size
         horizontal_box_index = col // region_size
 
-        # subbox_row, subbox_col = (2,2) -> i, j = (6,6)
+        # (subbox_row, subbox_col) = (2,2) -> (i, j) = (6,6)
         top_left_of_subbox_row = region_size * vertical_box_index
         top_left_of_subbox_col = region_size * horizontal_box_index
 

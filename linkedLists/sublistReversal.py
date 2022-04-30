@@ -57,6 +57,7 @@ class Solution:
         1. We could solve this using an array and linear space and linear time passes
 
         2. But we want to do it in O(1) space
+
         Complexity
         ----
         Time : O(N)
@@ -80,7 +81,7 @@ class Solution:
         # we need the first node in the sublist
         sublist_working_ptr = node_before_reversed_sublist.next
 
-        # NOTE: we throw the node to next to the working pointer to the front of the sublist
+        # NOTE: we throw the node next to the working pointer to the front of the sublist
         while start < end:
             # 1.) Cut out of the next node to throw to the head
             node_coming_to_sublist_front = sublist_working_ptr.next
@@ -88,7 +89,7 @@ class Solution:
             sublist_working_ptr.next = node_coming_to_sublist_front.next
 
             # 2.) Wire the node into sublist head
-            # point the node we are putting at the fron to the current sublist head
+            # point the node we are putting at the front to the current sublist head
             node_coming_to_sublist_front.next = node_before_reversed_sublist.next
             # make sure we point the node before the sublist to the new sublist head
             node_before_reversed_sublist.next = node_coming_to_sublist_front

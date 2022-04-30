@@ -77,7 +77,7 @@ Explanation: There are only 2 4x4 board arrangements of 4 non - attacking queens
 Constraints:
 1 <= n <= 10
 """
-
+from typing import List
 
 ################################### EPI IMPLEMENTATION ###################################
 

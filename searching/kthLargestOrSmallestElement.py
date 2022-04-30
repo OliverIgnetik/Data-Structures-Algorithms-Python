@@ -136,7 +136,7 @@ class HeapSolution:
         return -q.get()
 
 
-arr = [1, 2, 3, 4, 5, 6]
+arr = [10, 11, 1, 4, 8, 3]
 # NOTE: THE ARRAY DOES NOT HAVE TO BE SORTED
 k = 2
 s = Solution()

@@ -9,6 +9,8 @@ combinations('ABCD', 2) AB AC AD BC BD CD NOTE: ORDER DOES NOT MATTER AD = DA
 NOTE: N Choose R 
 Combinations = N!/(R!(N - R)!) ORDER DOES NOT MATTER
 Permutations = N!/(N-R)! ORDER MATTERS 
+
+GOAL: Given an array of integers return all the unique triplets that sum to 0
 """
 
 
@@ -62,9 +64,8 @@ class Solution:
 
 class SolutionPointers:
     def three_sum(self, A):
-        '''
-        This approach uses two pointers in the seen two sum and takes advantage of the
-        fact that the array is sorted. 
+        ''' 
+        This approach uses two pointers and checks if the two sum is in the seen hashmap and takes advantage of the fact that the array is sorted. 
 
         NOTE: the use of the reducer to turn the list into a string for hashing in the dictionary 
 
