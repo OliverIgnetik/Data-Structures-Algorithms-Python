@@ -1,6 +1,6 @@
 """
 Paint A Matrix
-Given a 2-color matrix and a point start, flip all points in the adjacent region of start to the opposite color.
+Given a 2-color matrix and a point start, flip all points in the connected region of start node to the opposite color.
 
 Example:
 Input:
@@ -42,8 +42,8 @@ class Solution:
 
         Complexity 
         ----
-        Time : O(E + V)
-        Space : O(V)
+        Time : O(E + V) -> O(mn)
+        Space : O(V) -> O(mn)
         '''
         total_rows = len(image)
         total_cols = len(image[0])

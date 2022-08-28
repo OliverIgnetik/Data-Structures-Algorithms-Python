@@ -3,7 +3,7 @@ String Transformations
 Given a string beginWord, a string endWord, and a list of words words, return the total "transformations" it would take
 to turn beginWord into endWord.
 
-A "transformation" consists of a single character change in a string. Only words in words can be used as words in the
+A "transformation" consists of a single character change in a string. Only words in words array can be used in the
 transformation "path" starting at beginWord and terminating at endWord.
 
 If a transformation path cannot be found, return -1.
@@ -112,7 +112,6 @@ class Solution:
             # if we have not seen this word then process
             if word not in self.seen:
                 self.seen.add(word)
-                # update the word relations hashmap and grab the current words neighbours
                 neighbours = self.get_neighbours(word)
                 for neighbour in neighbours:
                     if neighbour not in self.seen:

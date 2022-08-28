@@ -95,13 +95,13 @@ class Graph:
     ----
     It is particularly useful for one thing : finding the shortest path on unweighted graphs. 
 
-    BFS starts at some arbitraty node of a graph and explores the neighbour nodes first, 
+    BFS starts at some arbitrary node of a graph and explores the neighbour nodes first, 
     before moving to the next level neighbours
 
     NOTE: PRIMARY DATA STRUCTURE FIFO (QUEUE)
     """
 
-    def bfs(self, vert_id , target_id):
+    def bfs(self, vert_id, target_id):
         """
         Complexity 
         ----

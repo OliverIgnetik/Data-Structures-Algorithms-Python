@@ -26,7 +26,7 @@ class Solution:
     def convert_coords_to_id(self, row, col):
         return row * self.total_cols + col
 
-    def recursive_solver(self, row, col, done):
+    def recursive_solver(self, row, col):
         """
         In each stack frame we check if there are any neighbours we can visit.
         If we can visit a neighbour we mark its cell as black
@@ -35,8 +35,7 @@ class Solution:
 
         # this is our goal
         if self.convert_coords_to_id(row, col) == self.end:
-            done = True
-            return done
+            return True
 
         # get all the neighbours
         neighbours = self.get_neighbours(row, col)
@@ -50,16 +49,13 @@ class Solution:
                 neighbour_row, neighbour_col)
             # append the neighbour id to path
             self.path.append(neighbour_id)
-            if self.recursive_solver(neighbour_row, neighbour_col, done):
-                done = True
-
+            if self.recursive_solver(neighbour_row, neighbour_col):
+                return True
         # if we can't find a solution after exhausting all neighbours
         # NOTE: backtrack
-        if not done:
-            self.path.pop()
-            self.maze[row][col] = 'white'
-            done = False
-        return done
+        self.path.pop()
+        self.maze[row][col] = 'white'
+        return False
 
     def maze_solver(self, maze, start, end):
         """
@@ -96,7 +92,7 @@ class Solution:
                 f'{self.start} and {self.end} must be placed on white squares and inside the board')
 
         self.path.append(start)
-        self.recursive_solver(start_row, start_col, False)
+        self.recursive_solver(start_row, start_col)
         return self.path
 
 

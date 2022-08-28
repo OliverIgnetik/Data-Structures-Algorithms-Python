@@ -58,6 +58,8 @@ class Solution:
             - A intersection B = Null Set
         3. If these conditions are met then we have a bipartite graph
 
+        NOTE: this does not assume we are dealing with a strongly connected graph
+
         Complexity
         ----
         Time : O(E + V)
@@ -65,9 +67,9 @@ class Solution:
 
         Application
         ----
-        Given N gears, which of the gears touch each other and the rotation of the first gear. 
-        Question : will the gears be able to rotate?
-        Answer : If the graph is bipartite it will rotate. If not the gears will break.
+        Given N gears that can rotate clockwise/counter-clockwise. 
+        Question: will the gears be able to rotate?
+        Answer: If the graph is bipartite it will rotate. If not the gears will break.
 
         ie. if one gear rotates clockwise, every gear it touches must rotate 
         counter clockwise for the machine to work.
@@ -78,26 +80,40 @@ class Solution:
         # We need to keep check of what nodes we have visited
         seen = set()
         q = deque()
-        # Start at node 0
-        q.append(0)
-        while len(q == 0):
-            curr_node = q.popleft()
-            # check if we have seen this node
-            if curr_node not in seen:
-                seen.add(curr_node)
-                # case of first node
-                if groups[curr_node] == -1:
-                    groups[curr_node] = 1
-                for neigbour in adjList[curr_node]:
-                    # if we have seen the neighbour then skip
-                    if neigbour in seen:
-                        continue
-                    # If the colour of the current node is the same then we can not have
-                    if groups[neigbour] == groups[curr_node]:
-                        return False
-                    if groups[neigbour] == -1:
-                        # set the neighbour to the opposite group to satisfy the bipartition property
-                        groups[neigbour] = not groups[curr_node]
-                    # add neighbour to queue
-                    q.append(neigbour)
+
+        for i in range(len(adjList)):
+            if (i not in seen):
+                # Start BFS on this node
+                q.append(i)
+                while len(q) != 0:
+                    curr_node = q.popleft()
+                    # check if we have seen this node
+                    if curr_node not in seen:
+                        seen.add(curr_node)
+                        # case of first node in a section of the graph
+                        if groups[curr_node] == -1:
+                            groups[curr_node] = 1
+                        for neigbour in adjList[curr_node]:
+                            # if we have seen the neighbour then skip
+                            if neigbour in seen:
+                                continue
+                            # If the colour of the current node is the same then we can not have a bipartite graph
+                            if groups[neigbour] == groups[curr_node]:
+                                return False
+                            if groups[neigbour] == -1:
+                                # set the neighbour to the opposite group to satisfy the bipartition property
+                                groups[neigbour] = int(not groups[curr_node])
+                            # add neighbour to queue
+                            q.append(neigbour)
         return True
+
+
+g_adj_list = [
+    [3],
+    [3],
+    [4],
+    [],
+    [],
+]
+
+print(Solution().isBipartite(g_adj_list))

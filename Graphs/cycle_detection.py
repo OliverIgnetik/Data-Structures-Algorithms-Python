@@ -56,7 +56,7 @@ class RecursiveSolution:
     def __init__(self, graph):
         self.graph = graph
 
-    def detect_cycle(self):
+    def detect_cycle(self) -> bool:
         """
         Approach 
         ----
@@ -64,7 +64,7 @@ class RecursiveSolution:
         2. Process each node 
         3. If we reach a node that has reachable neighbours that are 'grey' 
         we return True
-        4. If the node has only nieghbours with 'black' then we have exhausted the current search space
+        4. If the node has only neighbours with 'black' then we have exhausted the current search space
 
         Compexity
         ---- 
@@ -77,15 +77,7 @@ class RecursiveSolution:
         'black' - 'investigated'
         'white' - unvisited
         """
-        self.node_status = {
-            'A': 'white',
-            'B': 'white',
-            'C': 'white',
-            'D': 'white',
-            'E': 'white',
-            'F': 'white',
-            'G': 'white',
-        }
+        self.node_status = {nkey: "white" for nkey in self.graph}
 
         cycle_found = False
         for node in self.graph:
