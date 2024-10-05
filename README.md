@@ -2,7 +2,18 @@
 
 ## Overview
 
-This repository is a collection of algorithms and data structures python.Included are some helpful examples of more advanced Python concepts like decorators and abstract base classes. Please check the `anaconda-project.yml` file for dependencies and package versions.
+This repository is a collection of algorithms and data structures python.Included are some helpful examples of more advanced Python concepts like decorators and abstract base classes. 
+
+If you are using conda for dependency managemen please check the `anaconda-project.yml` file for dependencies and package versions.
+
+If you are using mise and pip, please do the following: 
+
+1. `mise local python@3.11`
+2. `python -m venv venv`
+3. `source venv/bin/activate`
+4. `pip install -r requirements.txt`
+5. `deactivate` (when you are finished)
+
 
 ### Data Structures
 
