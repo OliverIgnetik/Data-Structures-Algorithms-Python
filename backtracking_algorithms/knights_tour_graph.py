@@ -1,7 +1,7 @@
 """
 ##########################################################
 Overview 
-Trace the path that a knight makes on an NxN chessboard 
+Trace the path that a knight makes on an NxN chessboard to visit every square
 Conditions
 The knight must only visit each square once
 
@@ -10,8 +10,9 @@ Runtime Complexity
 ##########################################################
 NOTE: the search space tree is related to time complexity 
 NOTE: the graph size is related to space complexity
-Time 
 
+##########################################################
+Time 
 O(k^N)
 k = average branching factor
 NOTE: Key tree theory 
