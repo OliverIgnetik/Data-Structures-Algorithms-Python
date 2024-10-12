@@ -1,4 +1,6 @@
-def first_unique_chars(myStr):
+from typing import Tuple
+
+def first_unique_chars(myStr: str) -> Tuple[int, str]:
     chars = {}
     for i, x in enumerate(myStr):
         if x not in chars:
@@ -6,12 +8,12 @@ def first_unique_chars(myStr):
         else:
             chars[x] = -1
 
-    for x in myStr:
-        if x != -1:
-            return chars[x]
+    for char in chars:
+        if chars[char] != -1:
+            return (chars[char], char)
 
-    return -1
+    raise ValueError("There are no unique chars")
 
 
-myStr = 'helleo'
+myStr = 'hhelleoo'
 print(first_unique_chars(myStr))
