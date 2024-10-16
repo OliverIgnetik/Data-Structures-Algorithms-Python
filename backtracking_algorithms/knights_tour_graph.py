@@ -40,6 +40,9 @@ Resources
 """
 
 
+from typing import List, Tuple
+
+
 class Vertex:
     def __init__(self, key):
         self.id = key
@@ -109,7 +112,7 @@ we use a DFS search tree for exhaustive path searching
 """
 
 
-def knightGraph(bdSize):
+def knightGraph(bdSize: int) -> Graph:
     ktGraph = Graph()
     for row in range(bdSize):
         for col in range(bdSize):
@@ -123,15 +126,15 @@ def knightGraph(bdSize):
     return ktGraph
 
 
-def posToNodeId(row, column, board_size):
+def posToNodeId(row: int, column: int, board_size: int) -> int:
     return (row * board_size) + column
 
 
-def nodeIdToPos(nodeId, board_size):
+def nodeIdToPos(nodeId: int, board_size: int) -> Tuple[int, int]:
     return (nodeId // board_size, nodeId % board_size)
 
 
-def genLegalMoves(x, y, bdSize):
+def genLegalMoves(x: int, y: int, bdSize: int) -> List[Tuple[int, int]]:
     newMoves = []
     # generic movesets
     moveOffsets = [(-1, -2), (-1, 2), (-2, -1), (-2, 1),
@@ -145,33 +148,33 @@ def genLegalMoves(x, y, bdSize):
     return newMoves
 
 
-def legalCoord(x, bdSize):
+def legalCoord(x: int, bdSize: int) -> bool:
     if x >= 0 and x < bdSize:
         return True
     else:
         return False
 
 
-def knightTour(n, path, u, limit):
+def knightTour(depth: int, path: List[Vertex], currentVertex: Vertex, limit: int) -> bool:
     # setting color to gray indicates it has been visited
-    u.setColor('gray')
-    path.append(u)
+    currentVertex.setColor('gray')
+    path.append(currentVertex)
     # keep going until the depth is the same as the limit
-    if n < limit:
+    if depth < limit:
 
-        nbrList = list(u.getConnections())
+        nbrList = list(currentVertex.getConnections())
         i = 0
         done = False
         # go through all the neighbours until you find one that solves the problem
         while i < len(nbrList) and not done:
             if nbrList[i].getColor() == 'white':
-                done = knightTour(n + 1, path, nbrList[i], limit)
+                done = knightTour(depth + 1, path, nbrList[i], limit)
             i = i + 1
         # if you don't find any solutions backtrack
         # ie. this part of the search space returns false
         if not done:
             path.pop()
-            u.setColor('white')
+            currentVertex.setColor('white')
     else:
         # this code will only evaluate when the depth of the recursion is equal to the number of positions on the board
         done = True
