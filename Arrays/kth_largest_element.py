@@ -70,9 +70,6 @@ It works given the fact that in a sorted array:
 kth largest item should be at an index greater then the index of pivot.
 Then we should focus our search on the items with greater indices.
 """
-
-
-import math
 import random
 
 
@@ -145,5 +142,5 @@ def quickselect(arr, k):
 
 arr = [8, 1, 3, 2, 6, 7]
 
-print(heap_approach_kth_smallest(arr, 2))
+print(heap_approach_kth_largest(arr, 2))
 print(quickselect(arr, 2))
