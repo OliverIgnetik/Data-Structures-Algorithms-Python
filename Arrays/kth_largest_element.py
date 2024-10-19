@@ -5,7 +5,7 @@ T(n) = aT(n/b) + cn^k
 
 T(n) is O(n^k) if a < b^k
 T(n) is O(n^klog_b(n)) if a = b^k
-T(n) is O(n^(log_b(a))) if a < b^k
+T(n) is O(n^(log_b(a))) if a > b^k
 """
 
 """
@@ -66,8 +66,8 @@ T(n) is O(n)
 We can do a partition and eliminate half of the search space (on average).
 It works given the fact that in a sorted array:
 - The kth largest item must be at index (n-k)
-- Generally speaking we know if we do a partition then
-kth largest item should be at an index greater then the index of pivot.
+- Generally speaking we know if we do a partition then the
+kth largest item should be at an index greater then the index of the pivot.
 Then we should focus our search on the items with greater indices.
 """
 import random
