@@ -48,5 +48,5 @@ arr = [1, 9, 2, 8, 3, 7, 4, 6, 5, 5, 13, 14, 11, 13, -1]
 print(pair_sum(arr, 3), 3)
 
 # Run basic tests
-# t = TestPair()
-# t.test(pair_sum)
+t = TestPair()
+t.test(pair_sum)
