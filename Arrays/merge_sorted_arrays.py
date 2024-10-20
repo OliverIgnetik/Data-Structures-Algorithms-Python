@@ -13,7 +13,7 @@ def mergesortedarr_pythonic(a, b):
 
 a = [1, 2, 3, 4]
 b = [3, 7, 9, 12]
-qw = mergesortedarr(a, b)
+qw = mergesortedarr_pythonic(a, b)
 print(qw)
 
 

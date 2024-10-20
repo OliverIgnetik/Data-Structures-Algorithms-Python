@@ -6,6 +6,9 @@ where K is the length of the running sub array
 """
 
 
+from typing import List, Tuple
+
+
 def quadratic_approach(arr):
     maxSum = -float('inf')
     maxSub = []
@@ -31,10 +34,10 @@ where K is the length of the running sub array
 """
 
 
-def kadane_algorithm(arr):
+def kadane_algorithm(arr: List[int]) -> Tuple[int, List[int]]:
     runningSum = arr[0]
     maxSum = arr[0]
-    maxSub = []
+    maxSub = [arr[0]]
     runningSub = []
 
     for i in range(1, len(arr)):
