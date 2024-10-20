@@ -140,7 +140,7 @@ def quickselect(arr, k):
     return -1
 
 
-arr = [8, 1, 3, 2, 6, 7, 3, 11, 12, 24, 25]
+arr = [8, 1, 3, 2, 6, 7]
 
 print(heap_approach_kth_largest(arr, 2))
 print(quickselect(arr, 2))
