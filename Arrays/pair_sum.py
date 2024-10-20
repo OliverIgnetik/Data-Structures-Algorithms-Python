@@ -1,6 +1,8 @@
+from typing import List
 from nose.tools import assert_equal
 
 """
+Find the number of unique pairs of integers in an array that sum up to a given target value.
 Classic problem trading time for space complexity
 using a set.
 Space : O(N)
@@ -8,7 +10,7 @@ Time : O(N)
 """
 
 
-def pair_sum(arr, k):
+def pair_sum(arr: List[int], k: int) -> int:
 
     # edge case check
     if len(arr) < 2:
